@@ -1,0 +1,228 @@
+/* -- reset styles -- */
+a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legend, li, ol, p, td, th, ul {
+  border: 0;
+  font-size: 100%;
+  list-style: none;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-decoration: none;
+  vertical-align: baseline;
+}
+
+body, button, fieldset, form, h1, h2, h3, h4, h5, h6, legend, li, ol, p, td, th, ul {
+  font-weight: normal;
+}
+
+input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+}
+
+/* -- base styles -- */
+body, button, input, select, td, th, textarea {
+  color: #000;
+  font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+}
+
+body {
+  background: #3e445c;
+  font-size: 62.5%;
+  line-height: 1;
+}
+
+/* -- template -- */
+#frame {
+  margin: 0 auto;
+  max-width: 94em;
+  min-width: 32em;
+  padding: 0 1.5em;
+}
+
+/* -- downloads -- */
+#download {
+  overflow: hidden;
+  /* contain child floats */
+}
+#download li {
+  float: right;
+  padding: 1em 0 1em 1.2em;
+}
+#download a {
+  color: #969baf;
+  display: block;
+  font-size: 1.1em;
+  line-height: 16px;
+  padding-left: 18px;
+  white-space: nowrap;
+}
+#download a:hover {
+  color: #d1d200;
+  text-decoration: underline;
+}
+#download .pdf a {
+  background: url(img/iconpdf.png) no-repeat 0 50%;
+}
+#download .word a {
+  background: url(img/iconword.png) no-repeat 0 50%;
+}
+
+/* -- content -- */
+#content {
+  background-color: #fff;
+  margin-bottom: 3em;
+  padding: 0.5em 1.4em;
+  /* -- headings -- */
+  /* -- lists, paragraphs & anchors -- */
+  /* -- technical skillset -- */
+  /* -- work/education sections -- */
+}
+#content h1, #content h2, #content h3, #content h4, #content h5 {
+  font-weight: bold;
+  line-height: 1.4;
+}
+#content h1, #content h2 {
+  background: #d8d8d8;
+  clear: both;
+  font-size: 1.5em;
+  margin: 2em 0 1em 0;
+  padding: 0.2em;
+}
+#content h3, #content h4 {
+  font-size: 1.2em;
+  margin-bottom: 0.6em;
+}
+#content h4 {
+  color: #aaa;
+  margin-bottom: 1em;
+}
+#content h3 + h4 {
+  margin-top: -0.6em;
+}
+#content h5 {
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
+}
+#content ul {
+  margin: 0 0 1.5em 2.5em;
+}
+#content li ul {
+  margin-bottom: 0;
+}
+#content p, #content li {
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+#content p {
+  margin-bottom: 1em;
+}
+#content li li,
+#content li p {
+  font-size: 1em;
+}
+#content a {
+  color: #000;
+  text-decoration: underline;
+}
+#content a:hover {
+  color: #b00;
+}
+#content .skillset li {
+  list-style-type: disc;
+}
+#content .detail {
+  margin-left: 10.7em;
+  position: relative;
+}
+#content .detail .date {
+  color: #000;
+  font-size: 1em;
+  font-weight: normal;
+  left: -10.7em;
+  line-height: 1.68;
+  /* match line-height between job title and employment date to ensure vertical alignment */
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+#content .detail .date span {
+  left: -999em;
+  overflow: hidden;
+  position: absolute;
+  top: -999em;
+  width: 1em;
+}
+#content .detail li {
+  list-style-type: disc;
+}
+
+/* -- address / contact details -- */
+#address {
+  margin-bottom: 1.8em;
+}
+
+#contact {
+  overflow: hidden;
+  /* contain child floats */
+}
+#contact ul {
+  float: left;
+  margin: 0;
+  width: 45%;
+}
+#contact ul strong {
+  display: inline-block;
+  width: 5.5em;
+}
+
+/* -- education / last updated (child of #content for higher specificity) -- */
+#content {
+  /* -- content - document last updated -- */
+}
+#content #education {
+  margin: 0;
+  overflow: hidden;
+  /* contain child floats */
+}
+#content #education li {
+  float: left;
+  list-style: none;
+  white-space: nowrap;
+  width: 45%;
+}
+#content #lastupdated {
+  color: #aaa;
+  margin: 0;
+  text-align: right;
+}
+
+/* -- small device width overrides -- */
+@media screen and (max-width: 700px) {
+  #contact ul,
+  #content #education li {
+    float: none;
+    width: auto;
+  }
+}
+@media screen and (max-width: 550px) {
+  #frame {
+    padding: 0;
+  }
+
+  #download li {
+    clear: right;
+    padding: 0.7em;
+  }
+
+  #content .detail {
+    margin: 0;
+    position: static;
+  }
+  #content .detail .date {
+    font-weight: bold;
+    left: 0;
+    line-height: 1.4;
+    margin-top: -1em;
+    position: static;
+  }
+}
