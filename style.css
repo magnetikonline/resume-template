@@ -1,4 +1,4 @@
-/* -- reset styles -- */
+/* -- reset -- */
 a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legend, li, ol, p, td, th, ul {
   border: 0;
   font-size: 100%;
@@ -19,7 +19,7 @@ input, select, textarea {
   margin: 0;
 }
 
-/* -- base styles -- */
+/* -- base -- */
 body, button, input, select, td, th, textarea {
   color: #000;
   font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
@@ -140,7 +140,6 @@ body {
   font-weight: normal;
   left: -10.7em;
   line-height: 1.68;
-  /* match line-height between job title and employment date to ensure vertical alignment */
   position: absolute;
   top: 0;
   white-space: nowrap;

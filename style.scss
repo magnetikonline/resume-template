@@ -1,4 +1,8 @@
-/* -- reset styles -- */
+$base-line-height: 1.4;
+$h3h4-font-size: 1.2em;
+$date-font-size: 1em;
+
+/* -- reset -- */
 a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,img,label,legend,li,ol,p,td,th,ul {
 	border: 0;
 	font-size: 100%;
@@ -19,7 +23,7 @@ input,select,textarea {
 	margin: 0;
 }
 
-/* -- base styles -- */
+/* -- base -- */
 body,button,input,select,td,th,textarea {
 	color: #000;
 	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
@@ -80,7 +84,7 @@ body {
 	/* -- headings -- */
 	h1,h2,h3,h4,h5 {
 		font-weight: bold;
-		line-height: 1.4;
+		line-height: $base-line-height;
 	}
 
 	h1,h2 {
@@ -92,7 +96,7 @@ body {
 	}
 
 	h3,h4 {
-		font-size: 1.2em;
+		font-size: $h3h4-font-size;
 		margin-bottom: 0.6em;
 	}
 
@@ -121,7 +125,7 @@ body {
 
 	p,li {
 		font-size: 1.1em;
-		line-height: 1.4;
+		line-height: $base-line-height;
 	}
 
 	p {
@@ -154,10 +158,10 @@ body {
 
 		.date {
 			color: #000;
-			font-size: 1em;
+			font-size: $date-font-size;
 			font-weight: normal;
 			left: -10.7em;
-			line-height: 1.68; /* match line-height between job title and employment date to ensure vertical alignment */
+			line-height: (($h3h4-font-size / ($date-font-size / 1em)) * $base-line-height) / 1em;
 			position: absolute;
 			top: 0;
 			white-space: nowrap;
@@ -245,7 +249,7 @@ body {
 		.date {
 			font-weight: bold;
 			left: 0;
-			line-height: 1.4;
+			line-height: $base-line-height;
 			margin-top: -1em;
 			position: static;
 		}
