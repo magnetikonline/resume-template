@@ -64,14 +64,14 @@ body {
 			color: #d1d200;
 			text-decoration: underline;
 		}
-	}
 
-	.pdf a {
-		background: url(img/iconpdf.png) no-repeat 0 50%;
-	}
+		&[href$=".doc"] {
+			background: url(img/icondoc.png) no-repeat 0 50%;
+		}
 
-	.word a {
-		background: url(img/iconword.png) no-repeat 0 50%;
+		&[href$=".pdf"] {
+			background: url(img/iconpdf.png) no-repeat 0 50%;
+		}
 	}
 }
 
@@ -237,9 +237,13 @@ body {
 		padding: 0;
 	}
 
+	#download {
+		padding: 0.5em 0;
+	}
+
 	#download li {
 		clear: right;
-		padding: 0.7em;
+		padding: 0.3em;
 	}
 
 	#content .detail {

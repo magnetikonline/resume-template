@@ -60,11 +60,11 @@ body {
   color: #d1d200;
   text-decoration: underline;
 }
-#download .pdf a {
-  background: url(img/iconpdf.png) no-repeat 0 50%;
+#download a[href$=".doc"] {
+  background: url(img/icondoc.png) no-repeat 0 50%;
 }
-#download .word a {
-  background: url(img/iconword.png) no-repeat 0 50%;
+#download a[href$=".pdf"] {
+  background: url(img/iconpdf.png) no-repeat 0 50%;
 }
 
 /* -- content -- */
@@ -208,9 +208,13 @@ body {
     padding: 0;
   }
 
+  #download {
+    padding: 0.5em 0;
+  }
+
   #download li {
     clear: right;
-    padding: 0.7em;
+    padding: 0.3em;
   }
 
   #content .detail {
