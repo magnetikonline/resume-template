@@ -1,4 +1,3 @@
-/* -- reset -- */
 a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legend, li, ol, p, td, th, ul {
   border: 0;
   font-size: 100%;
@@ -19,7 +18,6 @@ input, select, textarea {
   margin: 0;
 }
 
-/* -- base -- */
 body, button, input, select, td, th, textarea {
   color: #000;
   font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
@@ -31,7 +29,6 @@ body {
   line-height: 1;
 }
 
-/* -- template -- */
 #frame {
   margin: 0 auto;
   max-width: 94em;
@@ -39,10 +36,8 @@ body {
   padding: 0 1.5em;
 }
 
-/* -- downloads -- */
 #download {
   overflow: hidden;
-  /* contain child floats */
 }
 #download li {
   float: right;
@@ -67,15 +62,10 @@ body {
   background: url(img/iconpdf.png) no-repeat 0 50%;
 }
 
-/* -- content -- */
 #content {
   background-color: #fff;
   margin-bottom: 3em;
   padding: 0.5em 1.4em;
-  /* -- headings -- */
-  /* -- lists, paragraphs & anchors -- */
-  /* -- technical skillset -- */
-  /* -- work/education sections -- */
 }
 #content h1, #content h2, #content h3, #content h4, #content h5 {
   font-weight: bold;
@@ -155,14 +145,12 @@ body {
   list-style-type: disc;
 }
 
-/* -- address / contact details -- */
 #address {
   margin-bottom: 1.8em;
 }
 
 #contact {
   overflow: hidden;
-  /* contain child floats */
 }
 #contact ul {
   float: left;
@@ -174,14 +162,9 @@ body {
   width: 5.5em;
 }
 
-/* -- education / last updated (child of #content for higher specificity) -- */
-#content {
-  /* -- content - document last updated -- */
-}
 #content #education {
   margin: 0;
   overflow: hidden;
-  /* contain child floats */
 }
 #content #education li {
   float: left;
@@ -195,7 +178,6 @@ body {
   text-align: right;
 }
 
-/* -- small device width overrides -- */
 @media screen and (max-width: 700px) {
   #contact ul,
   #content #education li {
