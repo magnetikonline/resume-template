@@ -1,11 +1,18 @@
-$base-line-height: 1.4;
-$h3h4-font-size: 1.2em;
-$date-font-size: 1em;
+$baseLineHeight: 1.4;
+$h3h4FontSize: 1.2em;
+$dateFontSize: 1em;
 
 // -- reset --
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,img,label,legend,li,ol,p,td,th,ul {
 	border: 0;
 	font-size: 100%;
+	font-weight: normal;
 	list-style: none;
 	margin: 0;
 	outline: 0;
@@ -14,8 +21,8 @@ a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,img,label,legend,li,ol,p,td,t
 	vertical-align: baseline;
 }
 
-body,button,fieldset,form,h1,h2,h3,h4,h5,h6,legend,li,ol,p,td,th,ul {
-	font-weight: normal;
+a,abbr,label,li {
+	font-weight: inherit;
 }
 
 input,select,textarea {
@@ -35,6 +42,25 @@ body {
 	line-height: 1;
 }
 
+// -- base - clearfix --
+.cf:before,
+.cf:after {
+	content: '\0020';
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	zoom: 1; // for IE7 and below
+}
+
+// -- base - clearfix --
+
 // -- template --
 #frame {
 	margin: 0 auto;
@@ -45,32 +71,30 @@ body {
 
 // -- downloads --
 #download {
-	overflow: hidden; // contain child floats
-
-	li {
+	> li {
 		float: right;
 		padding: 1em 0 1em 1.2em;
-	}
 
-	a {
-		color: #969baf;
-		display: block;
-		font-size: 1.1em;
-		line-height: 16px;
-		padding-left: 18px;
-		white-space: nowrap;
+		> a {
+			color: #969baf;
+			display: block;
+			font-size: 1.1em;
+			line-height: 16px;
+			padding-left: 18px;
+			white-space: nowrap;
 
-		&:hover {
-			color: #d1d200;
-			text-decoration: underline;
-		}
+			&:hover {
+				color: #d1d200;
+				text-decoration: underline;
+			}
 
-		&[href$=".doc"] {
-			background: url(img/icondoc.png) no-repeat 0 50%;
-		}
+			&[href$=".doc"] {
+				background: url(img/icondoc.png) no-repeat 0 50%;
+			}
 
-		&[href$=".pdf"] {
-			background: url(img/iconpdf.png) no-repeat 0 50%;
+			&[href$=".pdf"] {
+				background: url(img/iconpdf.png) no-repeat 0 50%;
+			}
 		}
 	}
 }
@@ -84,7 +108,7 @@ body {
 	// -- headings --
 	h1,h2,h3,h4,h5 {
 		font-weight: bold;
-		line-height: $base-line-height;
+		line-height: $baseLineHeight;
 	}
 
 	h1,h2 {
@@ -96,7 +120,7 @@ body {
 	}
 
 	h3,h4 {
-		font-size: $h3h4-font-size;
+		font-size: $h3h4FontSize;
 		margin-bottom: 0.6em;
 	}
 
@@ -125,7 +149,7 @@ body {
 
 	p,li {
 		font-size: 1.1em;
-		line-height: $base-line-height;
+		line-height: $baseLineHeight;
 	}
 
 	p {
@@ -147,26 +171,26 @@ body {
 	}
 
 	// -- technical skillset --
-	.skillset li {
+	> .skillset > li {
 		list-style-type: disc;
 	}
 
 	// -- work/education sections --
-	.detail {
+	> .detail {
 		margin-left: 10.7em;
 		position: relative;
 
-		.date {
+		> .date {
 			color: #000;
-			font-size: $date-font-size;
+			font-size: $dateFontSize;
 			font-weight: normal;
 			left: -10.7em;
-			line-height: (($h3h4-font-size / ($date-font-size / 1em)) * $base-line-height) / 1em;
+			line-height: (($h3h4FontSize / ($dateFontSize / 1em)) * $baseLineHeight) / 1em;
 			position: absolute;
 			top: 0;
 			white-space: nowrap;
 
-			span {
+			> span {
 				left: -999em;
 				overflow: hidden;
 				position: absolute;
@@ -175,7 +199,7 @@ body {
 			}
 		}
 
-		li {
+		> ul > li {
 			list-style-type: disc;
 		}
 	}
@@ -187,14 +211,13 @@ body {
 }
 
 #contact {
-	overflow: hidden; // contain child floats
-
-	ul {
+	> ul {
 		float: left;
 		margin: 0;
-		width: 45%;
+		padding-right: 2em;
+		width: 50%;
 
-		strong {
+		> li > strong {
 			display: inline-block;
 			width: 5.5em;
 		}
@@ -205,13 +228,13 @@ body {
 #content {
 	#education {
 		margin: 0;
-		overflow: hidden; // contain child floats
 
-		li {
+		> li {
 			float: left;
 			list-style: none;
+			padding-right: 2em;
 			white-space: nowrap;
-			width: 45%;
+			width: 50%;
 		}
 	}
 
@@ -224,10 +247,11 @@ body {
 
 // -- small device width overrides --
 @media screen and (max-width: 700px) {
-	#contact ul,
-	#content #education li {
+	#contact > ul,
+	#content > .detail > #education > li {
 		float: none;
-		width: auto;
+		padding: 0;
+		width: 100%;
 	}
 }
 
@@ -240,19 +264,19 @@ body {
 		padding: 0.5em 0;
 	}
 
-	#download li {
+	#download > li {
 		clear: right;
 		padding: 0.3em;
 	}
 
-	#content .detail {
+	#content > .detail {
 		margin: 0;
 		position: static;
 
-		.date {
+		> .date {
 			font-weight: bold;
 			left: 0;
-			line-height: $base-line-height;
+			line-height: $baseLineHeight;
 			margin-top: -1em;
 			position: static;
 		}

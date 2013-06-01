@@ -1,6 +1,15 @@
+/* line 6, style.scss */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 12, style.scss */
 a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legend, li, ol, p, td, th, ul {
   border: 0;
   font-size: 100%;
+  font-weight: normal;
   list-style: none;
   margin: 0;
   outline: 0;
@@ -9,26 +18,50 @@ a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legen
   vertical-align: baseline;
 }
 
-body, button, fieldset, form, h1, h2, h3, h4, h5, h6, legend, li, ol, p, td, th, ul {
-  font-weight: normal;
+/* line 24, style.scss */
+a, abbr, label, li {
+  font-weight: inherit;
 }
 
+/* line 28, style.scss */
 input, select, textarea {
   font-size: 100%;
   margin: 0;
 }
 
+/* line 34, style.scss */
 body, button, input, select, td, th, textarea {
   color: #000;
   font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
 }
 
+/* line 39, style.scss */
 body {
   background: #3e445c;
   font-size: 62.5%;
   line-height: 1;
 }
 
+/* line 47, style.scss */
+.cf:before,
+.cf:after {
+  content: '\0020';
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 54, style.scss */
+.cf:after {
+  clear: both;
+}
+
+/* line 58, style.scss */
+.cf {
+  zoom: 1;
+}
+
+/* line 65, style.scss */
 #frame {
   margin: 0 auto;
   max-width: 94em;
@@ -36,14 +69,13 @@ body {
   padding: 0 1.5em;
 }
 
-#download {
-  overflow: hidden;
-}
-#download li {
+/* line 74, style.scss */
+#download > li {
   float: right;
   padding: 1em 0 1em 1.2em;
 }
-#download a {
+/* line 78, style.scss */
+#download > li > a {
   color: #969baf;
   display: block;
   font-size: 1.1em;
@@ -51,26 +83,32 @@ body {
   padding-left: 18px;
   white-space: nowrap;
 }
-#download a:hover {
+/* line 86, style.scss */
+#download > li > a:hover {
   color: #d1d200;
   text-decoration: underline;
 }
-#download a[href$=".doc"] {
+/* line 91, style.scss */
+#download > li > a[href$=".doc"] {
   background: url(img/icondoc.png) no-repeat 0 50%;
 }
-#download a[href$=".pdf"] {
+/* line 95, style.scss */
+#download > li > a[href$=".pdf"] {
   background: url(img/iconpdf.png) no-repeat 0 50%;
 }
 
+/* line 103, style.scss */
 #content {
   background-color: #fff;
   margin-bottom: 3em;
   padding: 0.5em 1.4em;
 }
+/* line 109, style.scss */
 #content h1, #content h2, #content h3, #content h4, #content h5 {
   font-weight: bold;
   line-height: 1.4;
 }
+/* line 114, style.scss */
 #content h1, #content h2 {
   background: #d8d8d8;
   clear: both;
@@ -78,53 +116,67 @@ body {
   margin: 2em 0 1em 0;
   padding: 0.2em;
 }
+/* line 122, style.scss */
 #content h3, #content h4 {
   font-size: 1.2em;
   margin-bottom: 0.6em;
 }
+/* line 127, style.scss */
 #content h4 {
   color: #aaa;
   margin-bottom: 1em;
 }
+/* line 132, style.scss */
 #content h3 + h4 {
   margin-top: -0.6em;
 }
+/* line 136, style.scss */
 #content h5 {
   font-size: 1.1em;
   margin-bottom: 0.2em;
 }
+/* line 142, style.scss */
 #content ul {
   margin: 0 0 1.5em 2.5em;
 }
+/* line 146, style.scss */
 #content li ul {
   margin-bottom: 0;
 }
+/* line 150, style.scss */
 #content p, #content li {
   font-size: 1.1em;
   line-height: 1.4;
 }
+/* line 155, style.scss */
 #content p {
   margin-bottom: 1em;
 }
+/* line 160, style.scss */
 #content li li,
 #content li p {
   font-size: 1em;
 }
+/* line 164, style.scss */
 #content a {
   color: #000;
   text-decoration: underline;
 }
+/* line 168, style.scss */
 #content a:hover {
   color: #b00;
 }
-#content .skillset li {
+/* line 174, style.scss */
+#content > .skillset > li {
   list-style-type: disc;
 }
-#content .detail {
+/* line 179, style.scss */
+#content > .detail {
   margin-left: 10.7em;
   position: relative;
 }
-#content .detail .date {
+/* line 183, style.scss */
+#content > .detail > .date {
   color: #000;
   font-size: 1em;
   font-weight: normal;
@@ -134,44 +186,50 @@ body {
   top: 0;
   white-space: nowrap;
 }
-#content .detail .date span {
+/* line 193, style.scss */
+#content > .detail > .date > span {
   left: -999em;
   overflow: hidden;
   position: absolute;
   top: -999em;
   width: 1em;
 }
-#content .detail li {
+/* line 202, style.scss */
+#content > .detail > ul > li {
   list-style-type: disc;
 }
 
+/* line 209, style.scss */
 #address {
   margin-bottom: 1.8em;
 }
 
-#contact {
-  overflow: hidden;
-}
-#contact ul {
+/* line 214, style.scss */
+#contact > ul {
   float: left;
   margin: 0;
-  width: 45%;
+  padding-right: 2em;
+  width: 50%;
 }
-#contact ul strong {
+/* line 220, style.scss */
+#contact > ul > li > strong {
   display: inline-block;
   width: 5.5em;
 }
 
+/* line 229, style.scss */
 #content #education {
   margin: 0;
-  overflow: hidden;
 }
-#content #education li {
+/* line 232, style.scss */
+#content #education > li {
   float: left;
   list-style: none;
+  padding-right: 2em;
   white-space: nowrap;
-  width: 45%;
+  width: 50%;
 }
+/* line 241, style.scss */
 #content #lastupdated {
   color: #aaa;
   margin: 0;
@@ -179,31 +237,38 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-  #contact ul,
-  #content #education li {
+  /* line 251, style.scss */
+  #contact > ul,
+  #content > .detail > #education > li {
     float: none;
-    width: auto;
+    padding: 0;
+    width: 100%;
   }
 }
 @media screen and (max-width: 550px) {
+  /* line 259, style.scss */
   #frame {
     padding: 0;
   }
 
+  /* line 263, style.scss */
   #download {
     padding: 0.5em 0;
   }
 
-  #download li {
+  /* line 267, style.scss */
+  #download > li {
     clear: right;
     padding: 0.3em;
   }
 
-  #content .detail {
+  /* line 272, style.scss */
+  #content > .detail {
     margin: 0;
     position: static;
   }
-  #content .detail .date {
+  /* line 276, style.scss */
+  #content > .detail > .date {
     font-weight: bold;
     left: 0;
     line-height: 1.4;
