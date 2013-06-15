@@ -43,8 +43,10 @@ body {
 }
 
 /* line 47, style.scss */
-.cf:before,
-.cf:after {
+#download:before, #contact:before, #content #education:before,
+#download:after,
+#contact:after,
+#content #education:after {
   content: '\0020';
   display: block;
   height: 0;
@@ -52,16 +54,16 @@ body {
 }
 
 /* line 54, style.scss */
-.cf:after {
+#download:after, #contact:after, #content #education:after {
   clear: both;
 }
 
 /* line 58, style.scss */
-.cf {
+#download, #contact, #content #education {
   zoom: 1;
 }
 
-/* line 65, style.scss */
+/* line 63, style.scss */
 #frame {
   margin: 0 auto;
   max-width: 94em;
@@ -204,24 +206,24 @@ body {
   margin-bottom: 1.8em;
 }
 
-/* line 214, style.scss */
+/* line 216, style.scss */
 #contact > ul {
   float: left;
   margin: 0;
   padding-right: 2em;
   width: 50%;
 }
-/* line 220, style.scss */
+/* line 222, style.scss */
 #contact > ul > li > strong {
   display: inline-block;
   width: 5.5em;
 }
 
-/* line 229, style.scss */
+/* line 231, style.scss */
 #content #education {
   margin: 0;
 }
-/* line 232, style.scss */
+/* line 236, style.scss */
 #content #education > li {
   float: left;
   list-style: none;
@@ -229,7 +231,7 @@ body {
   white-space: nowrap;
   width: 50%;
 }
-/* line 241, style.scss */
+/* line 245, style.scss */
 #content #lastupdated {
   color: #aaa;
   margin: 0;
@@ -237,7 +239,7 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-  /* line 251, style.scss */
+  /* line 255, style.scss */
   #contact > ul,
   #content > .detail > #education > li {
     float: none;
@@ -246,28 +248,28 @@ body {
   }
 }
 @media screen and (max-width: 550px) {
-  /* line 259, style.scss */
+  /* line 263, style.scss */
   #frame {
     padding: 0;
   }
 
-  /* line 263, style.scss */
+  /* line 267, style.scss */
   #download {
     padding: 0.5em 0;
   }
 
-  /* line 267, style.scss */
+  /* line 271, style.scss */
   #download > li {
     clear: right;
     padding: 0.3em;
   }
 
-  /* line 272, style.scss */
+  /* line 276, style.scss */
   #content > .detail {
     margin: 0;
     position: static;
   }
-  /* line 276, style.scss */
+  /* line 280, style.scss */
   #content > .detail > .date {
     font-weight: bold;
     left: 0;
