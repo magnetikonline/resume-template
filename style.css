@@ -1,11 +1,11 @@
-/* line 6, style.scss */
+/* line 7, style.scss */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 12, style.scss */
+/* line 13, style.scss */
 a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legend, li, ol, p, td, th, ul {
   border: 0;
   font-size: 100%;
@@ -18,31 +18,31 @@ a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legen
   vertical-align: baseline;
 }
 
-/* line 24, style.scss */
-a, abbr, label, li {
+/* line 25, style.scss */
+a, abbr {
   font-weight: inherit;
 }
 
-/* line 28, style.scss */
+/* line 29, style.scss */
 input, select, textarea {
   font-size: 100%;
   margin: 0;
 }
 
-/* line 34, style.scss */
+/* line 35, style.scss */
 body, button, input, select, td, th, textarea {
   color: #000;
   font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
 }
 
-/* line 39, style.scss */
+/* line 40, style.scss */
 body {
   background: #3e445c;
   font-size: 62.5%;
   line-height: 1;
 }
 
-/* line 47, style.scss */
+/* line 48, style.scss */
 #download:before, #contact:before, #content #education:before,
 #download:after,
 #contact:after,
@@ -53,17 +53,17 @@ body {
   overflow: hidden;
 }
 
-/* line 54, style.scss */
+/* line 55, style.scss */
 #download:after, #contact:after, #content #education:after {
   clear: both;
 }
 
-/* line 58, style.scss */
+/* line 59, style.scss */
 #download, #contact, #content #education {
   zoom: 1;
 }
 
-/* line 63, style.scss */
+/* line 64, style.scss */
 #frame {
   margin: 0 auto;
   max-width: 94em;
@@ -71,12 +71,12 @@ body {
   padding: 0 1.5em;
 }
 
-/* line 74, style.scss */
+/* line 75, style.scss */
 #download > li {
   float: right;
   padding: 1em 0 1em 1.2em;
 }
-/* line 78, style.scss */
+/* line 79, style.scss */
 #download > li > a {
   color: #969baf;
   display: block;
@@ -85,32 +85,32 @@ body {
   padding-left: 18px;
   white-space: nowrap;
 }
-/* line 86, style.scss */
+/* line 87, style.scss */
 #download > li > a:hover {
   color: #d1d200;
   text-decoration: underline;
 }
-/* line 91, style.scss */
+/* line 92, style.scss */
 #download > li > a[href$=".doc"] {
   background: url(img/icondoc.png) no-repeat 0 50%;
 }
-/* line 95, style.scss */
+/* line 96, style.scss */
 #download > li > a[href$=".pdf"] {
   background: url(img/iconpdf.png) no-repeat 0 50%;
 }
 
-/* line 103, style.scss */
+/* line 104, style.scss */
 #content {
   background-color: #fff;
   margin-bottom: 3em;
   padding: 0.5em 1.4em;
 }
-/* line 109, style.scss */
+/* line 110, style.scss */
 #content h1, #content h2, #content h3, #content h4, #content h5 {
   font-weight: bold;
   line-height: 1.4;
 }
-/* line 114, style.scss */
+/* line 115, style.scss */
 #content h1, #content h2 {
   background: #d8d8d8;
   clear: both;
@@ -118,66 +118,66 @@ body {
   margin: 2em 0 1em 0;
   padding: 0.2em;
 }
-/* line 122, style.scss */
+/* line 123, style.scss */
 #content h3, #content h4 {
   font-size: 1.2em;
   margin-bottom: 0.6em;
 }
-/* line 127, style.scss */
+/* line 128, style.scss */
 #content h4 {
   color: #aaa;
   margin-bottom: 1em;
 }
-/* line 132, style.scss */
+/* line 133, style.scss */
 #content h3 + h4 {
   margin-top: -0.6em;
 }
-/* line 136, style.scss */
+/* line 137, style.scss */
 #content h5 {
   font-size: 1.1em;
   margin-bottom: 0.2em;
 }
-/* line 142, style.scss */
+/* line 143, style.scss */
 #content ul {
   margin: 0 0 1.5em 2.5em;
 }
-/* line 146, style.scss */
+/* line 147, style.scss */
 #content li ul {
   margin-bottom: 0;
 }
-/* line 150, style.scss */
+/* line 151, style.scss */
 #content p, #content li {
   font-size: 1.1em;
   line-height: 1.4;
 }
-/* line 155, style.scss */
+/* line 156, style.scss */
 #content p {
   margin-bottom: 1em;
 }
-/* line 160, style.scss */
+/* line 161, style.scss */
 #content li li,
 #content li p {
   font-size: 1em;
 }
-/* line 164, style.scss */
+/* line 165, style.scss */
 #content a {
   color: #000;
   text-decoration: underline;
 }
-/* line 168, style.scss */
+/* line 169, style.scss */
 #content a:hover {
   color: #b00;
 }
-/* line 174, style.scss */
+/* line 175, style.scss */
 #content > .skillset > li {
   list-style-type: disc;
 }
-/* line 179, style.scss */
+/* line 180, style.scss */
 #content > .detail {
   margin-left: 10.7em;
   position: relative;
 }
-/* line 183, style.scss */
+/* line 184, style.scss */
 #content > .detail > .date {
   color: #000;
   font-size: 1em;
@@ -188,7 +188,7 @@ body {
   top: 0;
   white-space: nowrap;
 }
-/* line 193, style.scss */
+/* line 194, style.scss */
 #content > .detail > .date > span {
   left: -999em;
   overflow: hidden;
@@ -196,34 +196,34 @@ body {
   top: -999em;
   width: 1em;
 }
-/* line 202, style.scss */
+/* line 203, style.scss */
 #content > .detail > ul > li {
   list-style-type: disc;
 }
 
-/* line 209, style.scss */
+/* line 210, style.scss */
 #address {
   margin-bottom: 1.8em;
 }
 
-/* line 216, style.scss */
+/* line 217, style.scss */
 #contact > ul {
   float: left;
   margin: 0;
   padding-right: 2em;
   width: 50%;
 }
-/* line 222, style.scss */
+/* line 223, style.scss */
 #contact > ul > li > strong {
   display: inline-block;
   width: 5.5em;
 }
 
-/* line 231, style.scss */
+/* line 232, style.scss */
 #content #education {
   margin: 0;
 }
-/* line 236, style.scss */
+/* line 237, style.scss */
 #content #education > li {
   float: left;
   list-style: none;
@@ -231,7 +231,7 @@ body {
   white-space: nowrap;
   width: 50%;
 }
-/* line 245, style.scss */
+/* line 246, style.scss */
 #content #lastupdated {
   color: #aaa;
   margin: 0;
@@ -239,7 +239,7 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-  /* line 255, style.scss */
+  /* line 256, style.scss */
   #contact > ul,
   #content > .detail > #education > li {
     float: none;
@@ -248,28 +248,28 @@ body {
   }
 }
 @media screen and (max-width: 550px) {
-  /* line 263, style.scss */
+  /* line 264, style.scss */
   #frame {
     padding: 0;
   }
 
-  /* line 267, style.scss */
+  /* line 268, style.scss */
   #download {
     padding: 0.5em 0;
   }
 
-  /* line 271, style.scss */
+  /* line 272, style.scss */
   #download > li {
     clear: right;
     padding: 0.3em;
   }
 
-  /* line 276, style.scss */
+  /* line 277, style.scss */
   #content > .detail {
     margin: 0;
     position: static;
   }
-  /* line 280, style.scss */
+  /* line 281, style.scss */
   #content > .detail > .date {
     font-weight: bold;
     left: 0;

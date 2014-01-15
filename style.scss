@@ -2,6 +2,7 @@ $baseLineHeight: 1.4;
 $h3h4FontSize: 1.2em;
 $dateFontSize: 1em;
 
+
 // -- reset --
 * {
 	-moz-box-sizing: border-box;
@@ -21,7 +22,7 @@ a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,img,label,legend,li,ol,p,td,t
 	vertical-align: baseline;
 }
 
-a,abbr,label,li {
+a,abbr {
 	font-weight: inherit;
 }
 
