@@ -1,12 +1,12 @@
-/* line 7, style.scss */
+/* line 44, style.scss */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 13, style.scss */
-a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legend, li, ol, p, td, th, ul {
+/* line 50, style.scss */
+a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, iframe, img, label, legend, li, ol, p, td, th, ul {
   border: 0;
   font-size: 100%;
   font-weight: normal;
@@ -18,263 +18,381 @@ a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, img, label, legen
   vertical-align: baseline;
 }
 
-/* line 25, style.scss */
+/* line 62, style.scss */
 a, abbr {
   font-weight: inherit;
 }
 
-/* line 29, style.scss */
+/* line 66, style.scss */
 input, select, textarea {
   font-size: 100%;
   margin: 0;
 }
 
-/* line 35, style.scss */
-body, button, input, select, td, th, textarea {
+/* line 72, style.scss */
+body, button, input, select, td, textarea, th {
   color: #000;
-  font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+  font-family: Verdana,Geneva,sans-serif;
 }
 
-/* line 40, style.scss */
+/* line 77, style.scss */
 body {
-  background: #3e445c;
+  background: #f9f9f9;
   font-size: 62.5%;
   line-height: 1;
 }
+@media screen and (max-width: 550px) {
+  /* line 77, style.scss */
+  body {
+    background: #fff;
+  }
+}
+@media print {
+  /* line 77, style.scss */
+  body {
+    background: #fff;
+  }
+}
 
-/* line 48, style.scss */
-#download:before, #contact:before, #content #education:before,
-#download:after,
-#contact:after,
-#content #education:after {
+/* line 93, style.scss */
+.contactdetail:before, .datesection > .education:before,
+.contactdetail:after,
+.datesection > .education:after {
   content: '\0020';
   display: block;
   height: 0;
   overflow: hidden;
 }
 
-/* line 55, style.scss */
-#download:after, #contact:after, #content #education:after {
+/* line 101, style.scss */
+.contactdetail:after, .datesection > .education:after {
   clear: both;
 }
 
-/* line 59, style.scss */
-#download, #contact, #content #education {
-  zoom: 1;
-}
-
-/* line 64, style.scss */
-#frame {
-  margin: 0 auto;
-  max-width: 94em;
-  min-width: 32em;
-  padding: 0 1.5em;
-}
-
-/* line 75, style.scss */
-#download > li {
-  float: right;
-  padding: 1em 0 1em 1.2em;
-}
-/* line 79, style.scss */
-#download > li > a {
-  color: #969baf;
-  display: block;
-  font-size: 1.1em;
-  line-height: 16px;
-  padding-left: 18px;
-  white-space: nowrap;
-}
-/* line 87, style.scss */
-#download > li > a:hover {
-  color: #d1d200;
-  text-decoration: underline;
-}
-/* line 92, style.scss */
-#download > li > a[href$=".doc"] {
-  background: url(img/icondoc.png) no-repeat 0 50%;
-}
-/* line 96, style.scss */
-#download > li > a[href$=".pdf"] {
-  background: url(img/iconpdf.png) no-repeat 0 50%;
-}
-
-/* line 104, style.scss */
-#content {
-  background-color: #fff;
-  margin-bottom: 3em;
-  padding: 0.5em 1.4em;
-}
-/* line 110, style.scss */
-#content h1, #content h2, #content h3, #content h4, #content h5 {
-  font-weight: bold;
-  line-height: 1.4;
-}
-/* line 115, style.scss */
-#content h1, #content h2 {
-  background: #d8d8d8;
-  clear: both;
-  font-size: 1.5em;
-  margin: 2em 0 1em 0;
-  padding: 0.2em;
-}
-/* line 123, style.scss */
-#content h3, #content h4 {
-  font-size: 1.2em;
-  margin-bottom: 0.6em;
-}
-/* line 128, style.scss */
-#content h4 {
-  color: #aaa;
-  margin-bottom: 1em;
-}
-/* line 133, style.scss */
-#content h3 + h4 {
-  margin-top: -0.6em;
-}
-/* line 137, style.scss */
-#content h5 {
-  font-size: 1.1em;
-  margin-bottom: 0.2em;
-}
-/* line 143, style.scss */
-#content ul {
-  margin: 0 0 1.5em 2.5em;
-}
-/* line 147, style.scss */
-#content li ul {
-  margin-bottom: 0;
-}
-/* line 151, style.scss */
-#content p, #content li {
-  font-size: 1.1em;
-  line-height: 1.4;
-}
-/* line 156, style.scss */
-#content p {
-  margin-bottom: 1em;
-}
-/* line 161, style.scss */
-#content li li,
-#content li p {
-  font-size: 1em;
-}
-/* line 165, style.scss */
-#content a {
-  color: #000;
-  text-decoration: underline;
-}
-/* line 169, style.scss */
-#content a:hover {
-  color: #b00;
-}
-/* line 175, style.scss */
-#content > .skillset > li {
-  list-style-type: disc;
-}
-/* line 180, style.scss */
-#content > .detail {
-  margin-left: 10.7em;
-  position: relative;
-}
-/* line 184, style.scss */
-#content > .detail > .date {
-  color: #000;
-  font-size: 1em;
-  font-weight: normal;
-  left: -10.7em;
-  line-height: 1.68;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-/* line 194, style.scss */
-#content > .detail > .date > span {
+/* line 106, style.scss */
+.datesection > .date > span {
   left: -999em;
   overflow: hidden;
   position: absolute;
   top: -999em;
   width: 1em;
 }
-/* line 203, style.scss */
-#content > .detail > ul > li {
-  list-style-type: disc;
+
+/* line 115, style.scss */
+.topmenu > .inner, .pagebody {
+  margin: 0 auto;
+  width: 760px;
+}
+@media screen and (min-width: 551px) {
+  /* line 115, style.scss */
+  .topmenu > .inner, .pagebody {
+    max-width: 760px;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 550px) {
+  /* line 115, style.scss */
+  .topmenu > .inner, .pagebody {
+    width: auto;
+  }
 }
 
-/* line 210, style.scss */
-#address {
-  margin-bottom: 1.8em;
+/* line 131, style.scss */
+.topmenu {
+  background: #000;
+  font-size: 1.1em;
+  left: 0;
+  padding: 7px 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+@media print {
+  /* line 131, style.scss */
+  .topmenu {
+    display: none;
+  }
+}
+/* line 145, style.scss */
+.topmenu > .inner {
+  line-height: 30px;
+}
+@media screen and (max-width: 550px) {
+  /* line 145, style.scss */
+  .topmenu > .inner {
+    margin: 0 7px;
+  }
 }
 
-/* line 217, style.scss */
-#contact > ul {
+/* line 156, style.scss */
+.topmenu-navigation {
   float: left;
-  margin: 0;
-  padding-right: 2em;
-  width: 50%;
 }
-/* line 223, style.scss */
-#contact > ul > li > strong {
+@media screen and (max-width: 650px) {
+  /* line 156, style.scss */
+  .topmenu-navigation {
+    display: block;
+    float: none;
+    text-align: right;
+  }
+}
+/* line 166, style.scss */
+.topmenu-navigation > .item {
+  color: #fff;
   display: inline-block;
-  width: 5.5em;
+  white-space: nowrap;
+}
+/* line 171, style.scss */
+.topmenu-navigation > .item > .link {
+  color: #eeeeee;
+}
+/* line 174, style.scss */
+.topmenu-navigation > .item > .link:hover {
+  text-decoration: underline;
+}
+
+/* line 182, style.scss */
+.topmenu-download {
+  float: right;
+  text-align: right;
+}
+@media screen and (max-width: 650px) {
+  /* line 182, style.scss */
+  .topmenu-download {
+    display: block;
+    float: none;
+  }
+}
+/* line 192, style.scss */
+.topmenu-download > .item {
+  display: inline-block;
+  margin-left: 7px;
+}
+/* line 196, style.scss */
+.topmenu-download > .item > .msword,
+.topmenu-download > .item > .pdf {
+  color: #eeeeee;
+  display: block;
+  padding-left: 20px;
+  white-space: nowrap;
+}
+/* line 203, style.scss */
+.topmenu-download > .item > .msword:hover,
+.topmenu-download > .item > .pdf:hover {
+  text-decoration: underline;
+}
+/* line 209, style.scss */
+.topmenu-download > .item > .msword {
+  background: url(img/iconmsword.png) no-repeat 0 50%;
+}
+/* line 213, style.scss */
+.topmenu-download > .item > .pdf {
+  background: url(img/iconpdf.png) no-repeat 0 50%;
+}
+
+/* line 220, style.scss */
+.jumpto {
+  left: 0;
+  position: absolute;
+  top: -60px;
+}
+@media screen and (max-width: 650px) {
+  /* line 220, style.scss */
+  .jumpto {
+    top: -90px;
+  }
 }
 
 /* line 232, style.scss */
-#content #education {
+.pagebody {
+  background: #fff;
+  box-shadow: 0 0 3px #cccccc;
+  margin-bottom: 30px;
+  margin-top: 60px;
+  padding: 15px 7px;
+}
+@media screen and (max-width: 650px) {
+  /* line 232, style.scss */
+  .pagebody {
+    margin-top: 90px;
+  }
+}
+@media screen and (max-width: 550px) {
+  /* line 232, style.scss */
+  .pagebody {
+    box-shadow: none;
+    padding: 0 7px;
+  }
+}
+@media print {
+  /* line 232, style.scss */
+  .pagebody {
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+    width: auto;
+  }
+}
+/* line 259, style.scss */
+.pagebody h1, .pagebody h2, .pagebody h3, .pagebody h4, .pagebody h5 {
+  font-weight: bold;
+}
+/* line 263, style.scss */
+.pagebody h1, .pagebody h2 {
+  background: #d8d8d8;
+  font-size: 1.5em;
+  margin-bottom: 7px;
+  padding: 7px 3px;
+  position: relative;
+}
+/* line 271, style.scss */
+.pagebody h2 {
+  margin-top: 15px;
+}
+/* line 275, style.scss */
+.pagebody h3, .pagebody h4 {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 7px;
+}
+/* line 281, style.scss */
+.pagebody h4 {
+  color: #8b8b8b;
+  margin-bottom: 15px;
+}
+/* line 286, style.scss */
+.pagebody h3 + h4 {
+  margin-top: -7px;
+}
+/* line 290, style.scss */
+.pagebody h5 {
+  font-size: 1.1em;
+  margin-bottom: 7px;
+}
+/* line 296, style.scss */
+.pagebody ul {
+  margin: 0 0 15px 22px;
+}
+/* line 300, style.scss */
+.pagebody li ul {
+  margin-bottom: 0;
+}
+/* line 304, style.scss */
+.pagebody p, .pagebody li {
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+/* line 309, style.scss */
+.pagebody p {
+  margin-bottom: 15px;
+}
+/* line 313, style.scss */
+.pagebody li li,
+.pagebody li p {
+  font-size: 100%;
+}
+/* line 318, style.scss */
+.pagebody ul > li > p:last-child {
   margin: 0;
 }
-/* line 237, style.scss */
-#content #education > li {
-  float: left;
-  list-style: none;
-  padding-right: 2em;
-  white-space: nowrap;
-  width: 50%;
+/* line 322, style.scss */
+.pagebody a {
+  color: #000;
+  text-decoration: underline;
 }
-/* line 246, style.scss */
-#content #lastupdated {
-  color: #aaa;
+/* line 326, style.scss */
+.pagebody a:hover {
+  color: #bb0000;
+}
+/* line 332, style.scss */
+.pagebody > .lastupdated {
+  color: #8b8b8b;
   margin: 0;
   text-align: right;
 }
 
+/* line 343, style.scss */
+.contactdetail > ul {
+  float: left;
+  margin: 0;
+  padding-right: 15px;
+  width: 50%;
+}
 @media screen and (max-width: 700px) {
-  /* line 256, style.scss */
-  #contact > ul,
-  #content > .detail > #education > li {
+  /* line 343, style.scss */
+  .contactdetail > ul {
     float: none;
     padding: 0;
-    width: 100%;
+    width: auto;
   }
 }
+/* line 357, style.scss */
+.contactdetail > ul > li > strong {
+  display: inline-block;
+  width: 60px;
+}
+
+/* line 365, style.scss */
+.technicalskillset > li {
+  list-style: disc;
+}
+
+/* line 370, style.scss */
+.datesection {
+  margin-left: 110px;
+  position: relative;
+  z-index: 0;
+}
 @media screen and (max-width: 550px) {
-  /* line 264, style.scss */
-  #frame {
-    padding: 0;
-  }
-
-  /* line 268, style.scss */
-  #download {
-    padding: 0.5em 0;
-  }
-
-  /* line 272, style.scss */
-  #download > li {
-    clear: right;
-    padding: 0.3em;
-  }
-
-  /* line 277, style.scss */
-  #content > .detail {
+  /* line 370, style.scss */
+  .datesection {
     margin: 0;
     position: static;
   }
-  /* line 281, style.scss */
-  #content > .detail > .date {
+}
+/* line 382, style.scss */
+.datesection > .date {
+  color: #000;
+  font-size: 1.1em;
+  font-weight: normal;
+  left: -110px;
+  line-height: 1.63636;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+@media screen and (max-width: 550px) {
+  /* line 382, style.scss */
+  .datesection > .date {
     font-weight: bold;
-    left: 0;
-    line-height: 1.4;
-    margin-top: -1em;
+    line-height: 1.5;
+    margin-top: -7px;
     position: static;
+  }
+}
+/* line 406, style.scss */
+.datesection ul > li {
+  list-style: disc;
+}
+/* line 411, style.scss */
+.datesection > .education {
+  margin-left: 0;
+}
+/* line 415, style.scss */
+.datesection > .education > li {
+  float: left;
+  list-style: none;
+  padding-right: 15px;
+  white-space: nowrap;
+  width: 50%;
+}
+@media screen and (max-width: 700px) {
+  /* line 415, style.scss */
+  .datesection > .education > li {
+    float: none;
+    padding: 0;
+    width: auto;
   }
 }

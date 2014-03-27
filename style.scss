@@ -1,6 +1,43 @@
-$baseLineHeight: 1.4;
-$h3h4FontSize: 1.2em;
-$dateFontSize: 1em;
+// -- constants --
+$fontSizeBase: 1.1em;
+$fontSizeHeadingMain: 1.5em;
+$fontSizeHeadingSub: 1.2em;
+$lineHeightBase: 1.5;
+
+$respondWidthCenti: 700px;
+$respondWidthMicro: 550px;
+
+$pageWidthDefault: 90%;
+$pageWidthMaximum: 760px;
+
+$spacingBase: 15px;
+$spacingHalf: (floor($spacingBase / 2));
+$spacingQuarter: (floor($spacingBase / 4));
+
+$topMenuInnerHeight: 30px;
+$topMenuStackContentPageWidth: 650px;
+$dateSectionLeftMargin: 110px;
+
+$colorBodyAnchorHover: #b00;
+$colorGrey: #d8d8d8;
+$colorGreyDark: darken($colorGrey,30%);
+$colorPageBackground: #f9f9f9;
+$colorPageBodyShadow: #ccc;
+$colorWhiteTopMenu: #eee;
+
+
+// -- mixins --
+@mixin respondWidthFrom($widthFrom) {
+	@media screen and (min-width: $widthFrom + 1) { @content; }
+}
+
+@mixin respondWidthUpTo($widthUpTo) {
+	@media screen and (max-width: #{$widthUpTo}) { @content; }
+}
+
+@mixin printOnly() {
+	@media print { @content; }
+}
 
 
 // -- reset --
@@ -10,7 +47,7 @@ $dateFontSize: 1em;
 	box-sizing: border-box;
 }
 
-a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,img,label,legend,li,ol,p,td,th,ul {
+a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,iframe,img,label,legend,li,ol,p,td,th,ul {
 	border: 0;
 	font-size: 100%;
 	font-weight: normal;
@@ -32,116 +69,232 @@ input,select,textarea {
 }
 
 // -- base --
-body,button,input,select,td,th,textarea {
+body,button,input,select,td,textarea,th {
 	color: #000;
-	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+	font-family: Verdana,Geneva,sans-serif;
 }
 
 body {
-	background: #3e445c;
+	background: $colorPageBackground;
 	font-size: 62.5%;
 	line-height: 1;
+
+	@include respondWidthUpTo($respondWidthMicro) {
+		// [.pagebody] is now flush to browser left/right edgess - blend with background color
+		background: #fff;
+	}
+
+	@include printOnly() {
+		background: #fff;
+	}
 }
 
-// -- base - clearfix --
-%clearfix:before,
-%clearfix:after {
+// -- base - clear fix --
+%clearFix:before,
+%clearFix:after {
 	content: '\0020';
 	display: block;
 	height: 0;
 	overflow: hidden;
 }
 
-%clearfix:after {
+%clearFix:after {
 	clear: both;
 }
 
-%clearfix {
-	zoom: 1; // for IE7 and below
+// -- base - hide --
+%hide {
+	left: -999em;
+	overflow: hidden;
+	position: absolute;
+	top: -999em;
+	width: 1em;
 }
 
-// -- template --
-#frame {
+// -- placeholder - page frame --
+%pageFrame {
 	margin: 0 auto;
-	max-width: 94em;
-	min-width: 32em;
-	padding: 0 1.5em;
+	width: $pageWidthMaximum;
+
+	@include respondWidthFrom($respondWidthMicro) {
+		// overrides the fixed page frame width used for IE8 which doesn't understand media queries
+		max-width: $pageWidthMaximum;
+		width: $pageWidthDefault;
+	}
+
+	@include respondWidthUpTo($respondWidthMicro) {
+		width: auto;
+	}
 }
 
-// -- downloads --
-#download {
-	@extend %clearfix;
+// -- top menu --
+.topmenu {
+	background: #000;
+	font-size: $fontSizeBase;
+	left: 0;
+	padding: $spacingHalf 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 100;
 
-	> li {
-		float: right;
-		padding: 1em 0 1em 1.2em;
+	@include printOnly() {
+		display: none;
+	}
 
-		> a {
-			color: #969baf;
-			display: block;
-			font-size: 1.1em;
-			line-height: 16px;
-			padding-left: 18px;
-			white-space: nowrap;
+	> .inner {
+		@extend %pageFrame;
+		line-height: $topMenuInnerHeight;
+
+		@include respondWidthUpTo($respondWidthMicro) {
+			margin: 0 $spacingHalf; // matches padding applied to [.pagebody]
+		}
+	}
+}
+
+// -- top menu - navigation --
+.topmenu-navigation {
+	float: left;
+
+	@include respondWidthUpTo($topMenuStackContentPageWidth) {
+		// stacked navigation/downloads
+		display: block;
+		float: none;
+		text-align: right;
+	}
+
+	> .item {
+		color: #fff;
+		display: inline-block;
+		white-space: nowrap; // keep IE8 happy by avoiding <li>'s clashing into each other
+
+		> .link {
+			color: $colorWhiteTopMenu;
 
 			&:hover {
-				color: #d1d200;
 				text-decoration: underline;
-			}
-
-			&[href$=".doc"] {
-				background: url(img/icondoc.png) no-repeat 0 50%;
-			}
-
-			&[href$=".pdf"] {
-				background: url(img/iconpdf.png) no-repeat 0 50%;
 			}
 		}
 	}
 }
 
-// -- content --
-#content {
-	background-color: #fff;
-	margin-bottom: 3em;
-	padding: 0.5em 1.4em;
+// -- top menu - download --
+.topmenu-download {
+	float: right;
+	text-align: right;
 
-	// -- headings --
+	@include respondWidthUpTo($topMenuStackContentPageWidth) {
+		// stacked navigation/downloads
+		display: block;
+		float: none;
+	}
+
+	> .item {
+		display: inline-block;
+		margin-left: $spacingHalf;
+
+		> .msword,
+		> .pdf {
+			color: $colorWhiteTopMenu;
+			display: block;
+			padding-left: 20px; // allocation for file icon
+			white-space: nowrap;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		// file icons
+		> .msword {
+			background: url(img/iconmsword.png) no-repeat 0 50%;
+		}
+
+		> .pdf {
+			background: url(img/iconpdf.png) no-repeat 0 50%;
+		}
+	}
+}
+
+// -- jump to anchor point --
+.jumpto {
+	left: 0;
+	position: absolute;
+	top: -($topMenuInnerHeight + ($spacingBase * 2)); // offset by height of fixed [.topmenu] area
+
+	@include respondWidthUpTo($topMenuStackContentPageWidth) {
+		// stacked navigation/downloads
+		top: -(($topMenuInnerHeight * 2) + ($spacingBase * 2));
+	}
+}
+
+// -- page body --
+.pagebody {
+	@extend %pageFrame;
+	background: #fff;
+	box-shadow: 0 0 3px $colorPageBodyShadow;
+	margin-bottom: ($spacingBase * 2);
+	margin-top: ($topMenuInnerHeight + ($spacingBase * 2)); // clear fixed [.topmenu]
+	padding: $spacingBase $spacingHalf;
+
+	@include respondWidthUpTo($topMenuStackContentPageWidth) {
+		// double height clearing of [.topmenu] when items are stacked
+		margin-top: (($topMenuInnerHeight * 2) + ($spacingBase * 2));
+	}
+
+	@include respondWidthUpTo($respondWidthMicro) {
+		box-shadow: none;
+		padding: 0 $spacingHalf; // matches margin applied to [.topmenu > .inner]
+	}
+
+	@include printOnly() {
+		box-shadow: none;
+		margin: 0;
+		max-width: none;
+		padding: 0;
+		width: auto;
+	}
+
+	// typography - headings
 	h1,h2,h3,h4,h5 {
 		font-weight: bold;
-		line-height: $baseLineHeight;
 	}
 
 	h1,h2 {
-		background: #d8d8d8;
-		clear: both;
-		font-size: 1.5em;
-		margin: 2em 0 1em 0;
-		padding: 0.2em;
+		background: $colorGrey;
+		font-size: $fontSizeHeadingMain;
+		margin-bottom: $spacingHalf;
+		padding: $spacingHalf $spacingQuarter;
+		position: relative; // to support [.jumpto] elements
+	}
+
+	h2 {
+		margin-top: $spacingBase;
 	}
 
 	h3,h4 {
-		font-size: $h3h4FontSize;
-		margin-bottom: 0.6em;
+		font-size: $fontSizeHeadingSub;
+		line-height: $lineHeightBase;
+		margin-bottom: $spacingHalf;
 	}
 
 	h4 {
-		color: #aaa;
-		margin-bottom: 1em;
+		color: $colorGreyDark;
+		margin-bottom: $spacingBase;
 	}
 
 	h3 + h4 {
-		margin-top: -0.6em;
+		margin-top: -$spacingHalf; // defeat margin-bottom of adjacent h3 element
 	}
 
 	h5 {
-		font-size: 1.1em;
-		margin-bottom: 0.2em;
+		font-size: $fontSizeBase;
+		margin-bottom: $spacingHalf;
 	}
 
-	// -- lists, paragraphs & anchors --
+	// typography - lists, paragraphs, anchors
 	ul {
-		margin: 0 0 1.5em 2.5em;
+		margin: 0 0 $spacingBase ($spacingBase + $spacingHalf);
 	}
 
 	li ul {
@@ -149,17 +302,21 @@ body {
 	}
 
 	p,li {
-		font-size: 1.1em;
-		line-height: $baseLineHeight;
+		font-size: $fontSizeBase;
+		line-height: $lineHeightBase;
 	}
 
 	p {
-		margin-bottom: 1em;
+		margin-bottom: $spacingBase;
 	}
 
 	li li,
 	li p {
-		font-size: 1em;
+		font-size: 100%;
+	}
+
+	ul > li > p:last-child {
+		margin: 0; // remove bottom margin for a final paragraph used within a list item
 	}
 
 	a {
@@ -167,123 +324,107 @@ body {
 		text-decoration: underline;
 
 		&:hover {
-			color: #b00;
+			color: $colorBodyAnchorHover;
 		}
 	}
 
-	// -- technical skillset --
-	> .skillset > li {
-		list-style-type: disc;
-	}
-
-	// -- work/education sections --
-	> .detail {
-		margin-left: 10.7em;
-		position: relative;
-
-		> .date {
-			color: #000;
-			font-size: $dateFontSize;
-			font-weight: normal;
-			left: -10.7em;
-			line-height: (($h3h4FontSize / ($dateFontSize / 1em)) * $baseLineHeight) / 1em;
-			position: absolute;
-			top: 0;
-			white-space: nowrap;
-
-			> span {
-				left: -999em;
-				overflow: hidden;
-				position: absolute;
-				top: -999em;
-				width: 1em;
-			}
-		}
-
-		> ul > li {
-			list-style-type: disc;
-		}
-	}
-}
-
-// -- address / contact details --
-#address {
-	margin-bottom: 1.8em;
-}
-
-#contact {
-	@extend %clearfix;
-
-	> ul {
-		float: left;
-		margin: 0;
-		padding-right: 2em;
-		width: 50%;
-
-		> li > strong {
-			display: inline-block;
-			width: 5.5em;
-		}
-	}
-}
-
-// -- education / last updated (child of #content for higher specificity) --
-#content {
-	#education {
-		@extend %clearfix;
-
-		margin: 0;
-
-		> li {
-			float: left;
-			list-style: none;
-			padding-right: 2em;
-			white-space: nowrap;
-			width: 50%;
-		}
-	}
-
-	#lastupdated {
-		color: #aaa;
+	// last updated
+	> .lastupdated {
+		color: $colorGreyDark;
 		margin: 0;
 		text-align: right;
 	}
 }
 
-// -- small device width overrides --
-@media screen and (max-width: 700px) {
-	#contact > ul,
-	#content > .detail > #education > li {
-		float: none;
-		padding: 0;
-		width: 100%;
+// -- contact detail list --
+.contactdetail {
+	@extend %clearFix;
+
+	> ul {
+		float: left;
+		margin: 0;
+		padding-right: $spacingBase;
+		width: 50%;
+
+		@include respondWidthUpTo($respondWidthCenti) {
+			// stack contact details
+			float: none;
+			padding: 0;
+			width: auto;
+		}
+
+		// contact item label
+		> li > strong {
+			display: inline-block;
+			width: 60px;
+		}
 	}
 }
 
-@media screen and (max-width: 550px) {
-	#frame {
-		padding: 0;
-	}
+// -- technical skill set --
+.technicalskillset > li {
+	list-style: disc;
+}
 
-	#download {
-		padding: 0.5em 0;
-	}
+// -- dated experience/education sections --
+.datesection {
+	margin-left: $dateSectionLeftMargin;
+	position: relative;
+	z-index: 0; // below [.topmenu] (overkill I know)
 
-	#download > li {
-		clear: right;
-		padding: 0.3em;
-	}
-
-	#content > .detail {
+	@include respondWidthUpTo($respondWidthMicro) {
+		// stop [.date] to the left in margin layout
 		margin: 0;
 		position: static;
+	}
 
-		> .date {
+	// date label
+	> .date {
+		color: #000;
+		font-size: $fontSizeBase;
+		font-weight: normal;
+		left: -$dateSectionLeftMargin;
+		line-height: (($fontSizeHeadingSub / ($fontSizeBase / 1em)) * $lineHeightBase) / 1em;
+		position: absolute;
+		top: 0;
+		white-space: nowrap;
+
+		@include respondWidthUpTo($respondWidthMicro) {
+			// stop [.date] to the left in margin layout
 			font-weight: bold;
-			left: 0;
-			line-height: $baseLineHeight;
-			margin-top: -1em;
+			line-height: $lineHeightBase;
+			margin-top: -$spacingHalf;
 			position: static;
+		}
+
+		> span {
+			@extend %hide;
+		}
+	}
+
+	// list item styling
+	ul > li {
+		list-style: disc;
+	}
+
+	// education
+	> .education {
+		@extend %clearFix;
+		margin-left: 0;
+
+		> li {
+			float: left;
+			list-style: none;
+			padding-right: $spacingBase;
+			white-space: nowrap;
+			width: 50%;
+
+			@include respondWidthUpTo($respondWidthCenti) {
+				// stack items
+				float: none;
+				padding: 0;
+				width: auto;
+			}
 		}
 	}
 }
