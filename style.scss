@@ -384,7 +384,7 @@ body {
 		font-size: $fontSizeBase;
 		font-weight: normal;
 		left: -$dateSectionLeftMargin;
-		line-height: (($fontSizeHeadingSub / ($fontSizeBase / 1em)) * $lineHeightBase) / 1em;
+		line-height: (($fontSizeHeadingSub / ($fontSizeBase / 1em)) * $lineHeightBase) / 1em; // divide by 1em to strip unit (em) from values
 		position: absolute;
 		top: 0;
 		white-space: nowrap;
