@@ -1,0 +1,367 @@
+* {
+  box-sizing: border-box;
+}
+
+a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, iframe, img, label, legend, li, ol, p, td, th, ul {
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  list-style: none;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-decoration: none;
+  vertical-align: baseline;
+}
+
+a, abbr {
+  font-weight: inherit;
+}
+
+input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+}
+
+body, button, input, select, td, textarea, th {
+  color: #000;
+  font-family: Verdana,Geneva,sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  font-size: 62.5%;
+  line-height: 1;
+}
+@media screen and (max-width: 500px) {
+  body {
+    background: #fff;
+  }
+}
+@media print {
+  body {
+    background: #fff;
+  }
+}
+
+.contactdetail:before, .technicalskillset:before, .experience > .header:before,
+.contactdetail:after,
+.technicalskillset:after,
+.experience > .header:after {
+  content: '\0020';
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.contactdetail:after, .technicalskillset:after, .experience > .header:after {
+  clear: both;
+}
+
+.experience > .header > .period > span {
+  left: -999em;
+  overflow: hidden;
+  position: absolute;
+  top: -999em;
+  width: 1em;
+}
+
+.topmenu > .inner, .pagebody {
+  margin: 0 auto;
+  max-width: 760px;
+  width: 92%;
+}
+@media screen and (max-width: 500px) {
+  .topmenu > .inner, .pagebody {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+.topmenu {
+  background: #000;
+  font-size: 1.2em;
+  left: 0;
+  padding: 7px 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+@media print {
+  .topmenu {
+    display: none;
+  }
+}
+.topmenu > .inner {
+  line-height: 30px;
+}
+@media screen and (max-width: 500px) {
+  .topmenu > .inner {
+    margin: 0 7px;
+  }
+}
+
+.topmenu-navigation {
+  float: left;
+}
+.topmenu-navigation > .item {
+  color: #fff;
+  display: inline-block;
+  white-space: nowrap;
+}
+.topmenu-navigation > .item:after {
+  content: ' | ';
+}
+.topmenu-navigation > .item:last-child:after {
+  content: none;
+}
+.topmenu-navigation > .item > .link {
+  color: #ddd;
+}
+.topmenu-navigation > .item > .link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.topmenu-download {
+  float: right;
+}
+.topmenu-download > .item {
+  display: inline-block;
+  margin-right: 7px;
+  white-space: nowrap;
+}
+.topmenu-download > .item:last-child {
+  margin: 0;
+}
+.topmenu-download > .item > .msword,
+.topmenu-download > .item > .pdf {
+  color: #ddd;
+  display: block;
+  padding-left: 20px;
+}
+.topmenu-download > .item > .msword:hover,
+.topmenu-download > .item > .pdf:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.topmenu-download > .item > .msword {
+  background: url(img/iconmsword.png) no-repeat 0 50%;
+}
+.topmenu-download > .item > .pdf {
+  background: url(img/iconpdf.png) no-repeat 0 50%;
+}
+
+@media screen and (max-width: 650px) {
+  .topmenu-navigation, .topmenu-download {
+    display: block;
+    float: none;
+  }
+}
+
+.jumpto {
+  left: 0;
+  position: absolute;
+  top: -60px;
+}
+@media screen and (max-width: 650px) {
+  .jumpto {
+    top: -90px;
+  }
+}
+
+.pagebody {
+  background: #fff;
+  box-shadow: 0 0 3px #ccc;
+  margin-bottom: 30px;
+  margin-top: 60px;
+  padding: 15px 7px;
+}
+@media screen and (max-width: 650px) {
+  .pagebody {
+    margin-top: 90px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .pagebody {
+    box-shadow: none;
+    padding: 0 7px;
+  }
+}
+@media print {
+  .pagebody {
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+    width: auto;
+  }
+}
+.pagebody > h1, .pagebody > h2, .pagebody h3, .pagebody h4 {
+  font-weight: bold;
+}
+.pagebody > h1, .pagebody > h2 {
+  background: #d8d8d8;
+  margin-bottom: 7px;
+  padding: 7px 3px;
+  position: relative;
+}
+.pagebody > h1 {
+  font-size: 2em;
+}
+@media print {
+  .pagebody > h1 {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+.pagebody > h2 {
+  font-size: 1.7em;
+  margin-top: 30px;
+}
+@media print {
+  .pagebody > h2 {
+    background: none;
+    border-bottom: 1px solid #000;
+    padding: 0 0 3px;
+  }
+}
+.pagebody h3 {
+  font-size: 1.4em;
+  line-height: 1.5;
+}
+.pagebody h4 {
+  font-size: 1.2em;
+  margin-bottom: 7px;
+}
+.pagebody ul {
+  margin: 0 0 15px 22px;
+}
+.pagebody p, .pagebody li {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+.pagebody p {
+  margin-bottom: 15px;
+}
+.pagebody li li,
+.pagebody li p {
+  font-size: 100%;
+}
+.pagebody li > p:last-child {
+  margin: 0;
+}
+.pagebody a {
+  color: #000;
+  text-decoration: underline;
+}
+.pagebody a:hover {
+  color: #b00;
+}
+.pagebody > .updated {
+  color: #8c8c8c;
+  margin: 0;
+  text-align: right;
+}
+
+.contactdetail > ul {
+  float: left;
+  margin: 0;
+  width: 50%;
+}
+.contactdetail > ul:first-child {
+  padding-right: 15px;
+}
+@media screen and (max-width: 650px) {
+  .contactdetail > ul {
+    float: none;
+    padding: 0;
+    width: auto;
+  }
+}
+.contactdetail > ul > li > strong {
+  display: inline-block;
+  width: 60px;
+}
+
+.technicalskillset {
+  margin-bottom: -15px;
+}
+.technicalskillset > h3 {
+  clear: left;
+  float: left;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  padding-right: 15px;
+  width: 40%;
+}
+@media screen and (max-width: 650px) {
+  .technicalskillset > h3 {
+    float: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+}
+.technicalskillset > ul {
+  float: left;
+  margin: 0 0 15px;
+  width: 60%;
+}
+@media screen and (max-width: 650px) {
+  .technicalskillset > ul {
+    float: none;
+    width: auto;
+  }
+}
+.technicalskillset > ul > li {
+  display: inline;
+}
+.technicalskillset > ul > li:after {
+  content: ', ';
+}
+.technicalskillset > ul > li:last-child:after {
+  content: none;
+}
+
+@media print {
+  .experience > .header {
+    page-break-inside: avoid;
+  }
+}
+.experience > .header > .role {
+  color: #8c8c8c;
+  float: left;
+  font-size: 1.4em;
+  font-weight: bold;
+  width: 70%;
+}
+@media screen and (max-width: 650px) {
+  .experience > .header > .role {
+    float: none;
+    margin: 0;
+    width: auto;
+  }
+}
+.experience > .header > .period {
+  color: #8c8c8c;
+  float: right;
+  text-align: right;
+  width: 30%;
+}
+@media screen and (max-width: 650px) {
+  .experience > .header > .period {
+    float: none;
+    text-align: left;
+    width: auto;
+  }
+}
+.experience > ul li {
+  list-style: disc;
+}
+
+.experience + .experience {
+  margin-top: 30px;
+}
