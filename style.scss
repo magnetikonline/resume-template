@@ -1,29 +1,32 @@
 // -- constants --
-$fontSizeBase: 1.1em;
-$fontSizeHeadingMain: 1.5em;
-$fontSizeHeadingSub: 1.2em;
+$fontSizeBase: 1.2em;
+$fontSizeHeadingMain: 2em;
+$fontSizeHeadingSub: 1.7em;
+$fontSizeHeadingMinor: 1.4em;
 $lineHeightBase: 1.5;
 
-$respondWidthCenti: 700px;
-$respondWidthMicro: 550px;
+$respondWidthCenti: 650px;
+$respondWidthMicro: 500px;
 
-$pageWidthDefault: 90%;
+$pageWidth: 92%;
 $pageWidthMaximum: 760px;
 
 $spacingBase: 15px;
 $spacingHalf: (floor($spacingBase / 2));
 $spacingQuarter: (floor($spacingBase / 4));
+$spacingDouble: ($spacingBase * 2);
 
 $topMenuInnerHeight: 30px;
-$topMenuStackContentPageWidth: 650px;
 $dateSectionLeftMargin: 110px;
+$technicalSkillCategoryWidth: 40%;
+$experienceRoleWidth: 70%;
 
 $colorBodyAnchorHover: #b00;
 $colorGrey: #d8d8d8;
 $colorGreyDark: darken($colorGrey,30%);
 $colorPageBackground: #f9f9f9;
 $colorPageBodyShadow: #ccc;
-$colorWhiteTopMenu: #eee;
+$colorWhiteTopMenu: #ddd;
 
 
 // -- mixins --
@@ -42,8 +45,6 @@ $colorWhiteTopMenu: #eee;
 
 // -- reset --
 * {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
@@ -80,7 +81,7 @@ body {
 	line-height: 1;
 
 	@include respondWidthUpTo($respondWidthMicro) {
-		// [.pagebody] is now flush to browser left/right edgess - blend with background color
+		// [.pagebody] is now flush to browser left/right edges - blend with background color
 		background: #fff;
 	}
 
@@ -92,7 +93,7 @@ body {
 // -- base - clear fix --
 %clearFix:before,
 %clearFix:after {
-	content: '\0020';
+	content: '\0020'; // space character
 	display: block;
 	height: 0;
 	overflow: hidden;
@@ -114,16 +115,12 @@ body {
 // -- placeholder - page frame --
 %pageFrame {
 	margin: 0 auto;
-	width: $pageWidthMaximum;
-
-	@include respondWidthFrom($respondWidthMicro) {
-		// overrides the fixed page frame width used for IE8 which doesn't understand media queries
-		max-width: $pageWidthMaximum;
-		width: $pageWidthDefault;
-	}
+	max-width: $pageWidthMaximum;
+	width: $pageWidth;
 
 	@include respondWidthUpTo($respondWidthMicro) {
-		width: auto;
+		max-width: none;
+		width: 100%;
 	}
 }
 
@@ -155,23 +152,26 @@ body {
 // -- top menu - navigation --
 .topmenu-navigation {
 	float: left;
-
-	@include respondWidthUpTo($topMenuStackContentPageWidth) {
-		// stacked navigation/downloads
-		display: block;
-		float: none;
-		text-align: right;
-	}
+	@extend %stackedNavigation;
 
 	> .item {
 		color: #fff;
 		display: inline-block;
-		white-space: nowrap; // keep IE8 happy by avoiding <li>'s clashing into each other
+		white-space: nowrap;
+
+		&:after {
+			content: ' | ';
+		}
+
+		&:last-child:after {
+			content: none;
+		}
 
 		> .link {
 			color: $colorWhiteTopMenu;
 
 			&:hover {
+				color: #fff;
 				text-decoration: underline;
 			}
 		}
@@ -181,31 +181,31 @@ body {
 // -- top menu - download --
 .topmenu-download {
 	float: right;
-	text-align: right;
-
-	@include respondWidthUpTo($topMenuStackContentPageWidth) {
-		// stacked navigation/downloads
-		display: block;
-		float: none;
-	}
+	@extend %stackedNavigation;
 
 	> .item {
 		display: inline-block;
-		margin-left: $spacingHalf;
+		margin-right: $spacingHalf;
+		white-space: nowrap;
+
+		&:last-child {
+			margin: 0;
+		}
 
 		> .msword,
 		> .pdf {
 			color: $colorWhiteTopMenu;
 			display: block;
 			padding-left: 20px; // allocation for file icon
-			white-space: nowrap;
 
 			&:hover {
+				color: #fff;
 				text-decoration: underline;
 			}
 		}
 
 		// file icons
+		// TODO: update icons to 2018 styling
 		> .msword {
 			background: url(img/iconmsword.png) no-repeat 0 50%;
 		}
@@ -216,15 +216,24 @@ body {
 	}
 }
 
+// -- top menu - stacked --
+%stackedNavigation {
+	@include respondWidthUpTo($respondWidthCenti) {
+		// stacked navigation/downloads
+		display: block;
+		float: none;
+	}
+}
+
 // -- jump to anchor point --
 .jumpto {
 	left: 0;
 	position: absolute;
-	top: -($topMenuInnerHeight + ($spacingBase * 2)); // offset by height of fixed [.topmenu] area
+	top: -($topMenuInnerHeight + $spacingDouble); // offset by height of fixed [.topmenu] area
 
-	@include respondWidthUpTo($topMenuStackContentPageWidth) {
+	@include respondWidthUpTo($respondWidthCenti) {
 		// stacked navigation/downloads
-		top: -(($topMenuInnerHeight * 2) + ($spacingBase * 2));
+		top: -(($topMenuInnerHeight * 2) + $spacingDouble);
 	}
 }
 
@@ -233,13 +242,13 @@ body {
 	@extend %pageFrame;
 	background: #fff;
 	box-shadow: 0 0 3px $colorPageBodyShadow;
-	margin-bottom: ($spacingBase * 2);
-	margin-top: ($topMenuInnerHeight + ($spacingBase * 2)); // clear fixed [.topmenu]
+	margin-bottom: $spacingDouble;
+	margin-top: ($topMenuInnerHeight + $spacingDouble); // clear fixed [.topmenu]
 	padding: $spacingBase $spacingHalf;
 
-	@include respondWidthUpTo($topMenuStackContentPageWidth) {
+	@include respondWidthUpTo($respondWidthCenti) {
 		// double height clearing of [.topmenu] when items are stacked
-		margin-top: (($topMenuInnerHeight * 2) + ($spacingBase * 2));
+		margin-top: (($topMenuInnerHeight * 2) + $spacingDouble);
 	}
 
 	@include respondWidthUpTo($respondWidthMicro) {
@@ -256,38 +265,44 @@ body {
 	}
 
 	// typography - headings
-	h1,h2,h3,h4,h5 {
+	> h1,> h2,h3,h4 {
 		font-weight: bold;
 	}
 
-	h1,h2 {
+	> h1,> h2 {
 		background: $colorGrey;
-		font-size: $fontSizeHeadingMain;
 		margin-bottom: $spacingHalf;
 		padding: $spacingHalf $spacingQuarter;
 		position: relative; // to support [.jumpto] elements
 	}
 
-	h2 {
-		margin-top: $spacingBase;
+	> h1 {
+		font-size: $fontSizeHeadingMain;
+
+		@include printOnly() {
+			background: none;
+			margin: 0;
+			padding: 0;
+		}
 	}
 
-	h3,h4 {
+	> h2 {
 		font-size: $fontSizeHeadingSub;
+		margin-top: $spacingDouble;
+
+		@include printOnly() {
+			background: none;
+			border-bottom: 1px solid #000;
+			padding: 0 0 $spacingQuarter;
+		}
+	}
+
+	h3 {
+		font-size: $fontSizeHeadingMinor;
 		line-height: $lineHeightBase;
-		margin-bottom: $spacingHalf;
 	}
 
 	h4 {
-		color: $colorGreyDark;
-		margin-bottom: $spacingBase;
-	}
-
-	h3 + h4 {
-		margin-top: -$spacingHalf; // defeat margin-bottom of adjacent h3 element
-	}
-
-	h5 {
 		font-size: $fontSizeBase;
 		margin-bottom: $spacingHalf;
 	}
@@ -295,10 +310,6 @@ body {
 	// typography - lists, paragraphs, anchors
 	ul {
 		margin: 0 0 $spacingBase ($spacingBase + $spacingHalf);
-	}
-
-	li ul {
-		margin-bottom: 0;
 	}
 
 	p,li {
@@ -310,13 +321,14 @@ body {
 		margin-bottom: $spacingBase;
 	}
 
+
 	li li,
 	li p {
 		font-size: 100%;
 	}
 
-	ul > li > p:last-child {
-		margin: 0; // remove bottom margin for a final paragraph used within a list item
+	li > p:last-child {
+		margin: 0;
 	}
 
 	a {
@@ -328,23 +340,26 @@ body {
 		}
 	}
 
-	// last updated
-	> .lastupdated {
+	// page updated
+	> .updated {
 		color: $colorGreyDark;
 		margin: 0;
 		text-align: right;
 	}
 }
 
-// -- contact detail list --
+// -- contact details --
 .contactdetail {
 	@extend %clearFix;
 
 	> ul {
 		float: left;
 		margin: 0;
-		padding-right: $spacingBase;
 		width: 50%;
+
+		&:first-child {
+			padding-right: $spacingBase;
+		}
 
 		@include respondWidthUpTo($respondWidthCenti) {
 			// stack contact details
@@ -362,69 +377,108 @@ body {
 }
 
 // -- technical skill set --
-.technicalskillset > li {
-	list-style: disc;
-}
+.technicalskillset {
+	@extend %clearFix;
+	// eat up last h3/ul margin bottom
+	margin-bottom: (0 - $spacingBase);
 
-// -- dated experience/education sections --
-.datesection {
-	margin-left: $dateSectionLeftMargin;
-	position: relative;
-	z-index: 0; // below [.topmenu] (overkill I know)
-
-	@include respondWidthUpTo($respondWidthMicro) {
-		// stop [.date] to the left in margin layout
-		margin: 0;
-		position: static;
-	}
-
-	// date label
-	> .date {
-		color: #000;
+	// category
+	> h3 {
+		clear: left;
+		float: left;
+		// lower font size to match that of skill
 		font-size: $fontSizeBase;
-		font-weight: normal;
-		left: -$dateSectionLeftMargin;
-		line-height: (($fontSizeHeadingSub / ($fontSizeBase / 1em)) * $lineHeightBase) / 1em; // divide by 1em to strip unit (em) from values
-		position: absolute;
-		top: 0;
-		white-space: nowrap;
+		margin-bottom: $spacingBase;
+		padding-right: $spacingBase;
+		width: $technicalSkillCategoryWidth;
 
-		@include respondWidthUpTo($respondWidthMicro) {
-			// stop [.date] to the left in margin layout
-			font-weight: bold;
-			line-height: $lineHeightBase;
-			margin-top: -$spacingHalf;
-			position: static;
-		}
-
-		> span {
-			@extend %hide;
+		@include respondWidthUpTo($respondWidthCenti) {
+			// stack group title and list
+			float: none;
+			margin: 0;
+			padding: 0;
+			width: auto;
 		}
 	}
 
-	// list item styling
-	ul > li {
-		list-style: disc;
-	}
+	// skill list
+	> ul {
+		float: left;
+		margin: 0 0 $spacingBase;
+		width: (100% - $technicalSkillCategoryWidth);
 
-	// education
-	> .education {
-		@extend %clearFix;
-		margin-left: 0;
+		@include respondWidthUpTo($respondWidthCenti) {
+			// stack group title and list
+			float: none;
+			width: auto;
+		}
 
 		> li {
-			float: left;
-			list-style: none;
-			padding-right: $spacingBase;
-			white-space: nowrap;
-			width: 50%;
+			display: inline;
 
-			@include respondWidthUpTo($respondWidthCenti) {
-				// stack items
-				float: none;
-				padding: 0;
-				width: auto;
+			&:after {
+				content: ', ';
+			}
+
+			&:last-child:after {
+				content: none;
 			}
 		}
 	}
+}
+
+// -- experience --
+.experience {
+	> .header {
+		@extend %clearFix;
+
+		@include printOnly() {
+			page-break-inside: avoid;
+		}
+
+		// job role
+		> .role {
+			color: $colorGreyDark;
+			float: left;
+			font-size: $fontSizeHeadingMinor;
+			font-weight: bold;
+			width: $experienceRoleWidth;
+
+			@include respondWidthUpTo($respondWidthCenti) {
+				// stack job header details
+				float: none;
+				margin: 0;
+				width: auto;
+			}
+		}
+
+		// employment period
+		> .period {
+			color: $colorGreyDark;
+			float: right;
+			text-align: right;
+			width: (100% - $experienceRoleWidth);
+
+			@include respondWidthUpTo($respondWidthCenti) {
+				// stack job header details
+				float: none;
+				text-align: left;
+				width: auto;
+			}
+
+			// label
+			> span {
+				@extend %hide;
+			}
+		}
+	}
+
+	> ul li {
+		list-style: disc;
+	}
+}
+
+.experience + .experience {
+	// gap between experence items
+	margin-top: $spacingDouble;
 }

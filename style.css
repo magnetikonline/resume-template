@@ -1,11 +1,7 @@
-/* line 44, style.scss */
 * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 50, style.scss */
 a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, iframe, img, label, legend, li, ol, p, td, th, ul {
   border: 0;
   font-size: 100%;
@@ -18,59 +14,51 @@ a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, iframe, img, labe
   vertical-align: baseline;
 }
 
-/* line 62, style.scss */
 a, abbr {
   font-weight: inherit;
 }
 
-/* line 66, style.scss */
 input, select, textarea {
   font-size: 100%;
   margin: 0;
 }
 
-/* line 72, style.scss */
 body, button, input, select, td, textarea, th {
   color: #000;
   font-family: Verdana,Geneva,sans-serif;
 }
 
-/* line 77, style.scss */
 body {
   background: #f9f9f9;
   font-size: 62.5%;
   line-height: 1;
 }
-@media screen and (max-width: 550px) {
-  /* line 77, style.scss */
+@media screen and (max-width: 500px) {
   body {
     background: #fff;
   }
 }
 @media print {
-  /* line 77, style.scss */
   body {
     background: #fff;
   }
 }
 
-/* line 93, style.scss */
-.contactdetail:before, .datesection > .education:before,
+.contactdetail:before, .technicalskillset:before, .experience > .header:before,
 .contactdetail:after,
-.datesection > .education:after {
+.technicalskillset:after,
+.experience > .header:after {
   content: '\0020';
   display: block;
   height: 0;
   overflow: hidden;
 }
 
-/* line 101, style.scss */
-.contactdetail:after, .datesection > .education:after {
+.contactdetail:after, .technicalskillset:after, .experience > .header:after {
   clear: both;
 }
 
-/* line 106, style.scss */
-.datesection > .date > span {
+.experience > .header > .period > span {
   left: -999em;
   overflow: hidden;
   position: absolute;
@@ -78,29 +66,21 @@ body {
   width: 1em;
 }
 
-/* line 115, style.scss */
 .topmenu > .inner, .pagebody {
   margin: 0 auto;
-  width: 760px;
+  max-width: 760px;
+  width: 92%;
 }
-@media screen and (min-width: 551px) {
-  /* line 115, style.scss */
+@media screen and (max-width: 500px) {
   .topmenu > .inner, .pagebody {
-    max-width: 760px;
-    width: 90%;
-  }
-}
-@media screen and (max-width: 550px) {
-  /* line 115, style.scss */
-  .topmenu > .inner, .pagebody {
-    width: auto;
+    max-width: none;
+    width: 100%;
   }
 }
 
-/* line 131, style.scss */
 .topmenu {
   background: #000;
-  font-size: 1.1em;
+  font-size: 1.2em;
   left: 0;
   padding: 7px 0;
   position: fixed;
@@ -109,124 +89,107 @@ body {
   z-index: 100;
 }
 @media print {
-  /* line 131, style.scss */
   .topmenu {
     display: none;
   }
 }
-/* line 145, style.scss */
 .topmenu > .inner {
   line-height: 30px;
 }
-@media screen and (max-width: 550px) {
-  /* line 145, style.scss */
+@media screen and (max-width: 500px) {
   .topmenu > .inner {
     margin: 0 7px;
   }
 }
 
-/* line 156, style.scss */
 .topmenu-navigation {
   float: left;
 }
-@media screen and (max-width: 650px) {
-  /* line 156, style.scss */
-  .topmenu-navigation {
-    display: block;
-    float: none;
-    text-align: right;
-  }
-}
-/* line 166, style.scss */
 .topmenu-navigation > .item {
   color: #fff;
   display: inline-block;
   white-space: nowrap;
 }
-/* line 171, style.scss */
-.topmenu-navigation > .item > .link {
-  color: #eeeeee;
+.topmenu-navigation > .item:after {
+  content: ' | ';
 }
-/* line 174, style.scss */
+.topmenu-navigation > .item:last-child:after {
+  content: none;
+}
+.topmenu-navigation > .item > .link {
+  color: #ddd;
+}
 .topmenu-navigation > .item > .link:hover {
+  color: #fff;
   text-decoration: underline;
 }
 
-/* line 182, style.scss */
 .topmenu-download {
   float: right;
-  text-align: right;
 }
-@media screen and (max-width: 650px) {
-  /* line 182, style.scss */
-  .topmenu-download {
-    display: block;
-    float: none;
-  }
-}
-/* line 192, style.scss */
 .topmenu-download > .item {
   display: inline-block;
-  margin-left: 7px;
-}
-/* line 196, style.scss */
-.topmenu-download > .item > .msword,
-.topmenu-download > .item > .pdf {
-  color: #eeeeee;
-  display: block;
-  padding-left: 20px;
+  margin-right: 7px;
   white-space: nowrap;
 }
-/* line 203, style.scss */
+.topmenu-download > .item:last-child {
+  margin: 0;
+}
+.topmenu-download > .item > .msword,
+.topmenu-download > .item > .pdf {
+  color: #ddd;
+  display: block;
+  padding-left: 20px;
+}
 .topmenu-download > .item > .msword:hover,
 .topmenu-download > .item > .pdf:hover {
+  color: #fff;
   text-decoration: underline;
 }
-/* line 209, style.scss */
 .topmenu-download > .item > .msword {
   background: url(img/iconmsword.png) no-repeat 0 50%;
 }
-/* line 213, style.scss */
 .topmenu-download > .item > .pdf {
   background: url(img/iconpdf.png) no-repeat 0 50%;
 }
 
-/* line 220, style.scss */
+@media screen and (max-width: 650px) {
+  .topmenu-navigation, .topmenu-download {
+    display: block;
+    float: none;
+  }
+}
+
 .jumpto {
   left: 0;
   position: absolute;
   top: -60px;
 }
 @media screen and (max-width: 650px) {
-  /* line 220, style.scss */
   .jumpto {
     top: -90px;
   }
 }
 
-/* line 232, style.scss */
 .pagebody {
   background: #fff;
-  box-shadow: 0 0 3px #cccccc;
+  box-shadow: 0 0 3px #ccc;
   margin-bottom: 30px;
   margin-top: 60px;
   padding: 15px 7px;
 }
 @media screen and (max-width: 650px) {
-  /* line 232, style.scss */
   .pagebody {
     margin-top: 90px;
   }
 }
-@media screen and (max-width: 550px) {
-  /* line 232, style.scss */
+@media screen and (max-width: 500px) {
   .pagebody {
     box-shadow: none;
     padding: 0 7px;
   }
 }
 @media print {
-  /* line 232, style.scss */
   .pagebody {
     box-shadow: none;
     margin: 0;
@@ -235,164 +198,170 @@ body {
     width: auto;
   }
 }
-/* line 259, style.scss */
-.pagebody h1, .pagebody h2, .pagebody h3, .pagebody h4, .pagebody h5 {
+.pagebody > h1, .pagebody > h2, .pagebody h3, .pagebody h4 {
   font-weight: bold;
 }
-/* line 263, style.scss */
-.pagebody h1, .pagebody h2 {
+.pagebody > h1, .pagebody > h2 {
   background: #d8d8d8;
-  font-size: 1.5em;
   margin-bottom: 7px;
   padding: 7px 3px;
   position: relative;
 }
-/* line 271, style.scss */
-.pagebody h2 {
-  margin-top: 15px;
+.pagebody > h1 {
+  font-size: 2em;
 }
-/* line 275, style.scss */
-.pagebody h3, .pagebody h4 {
-  font-size: 1.2em;
+@media print {
+  .pagebody > h1 {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+.pagebody > h2 {
+  font-size: 1.7em;
+  margin-top: 30px;
+}
+@media print {
+  .pagebody > h2 {
+    background: none;
+    border-bottom: 1px solid #000;
+    padding: 0 0 3px;
+  }
+}
+.pagebody h3 {
+  font-size: 1.4em;
   line-height: 1.5;
-  margin-bottom: 7px;
 }
-/* line 281, style.scss */
 .pagebody h4 {
-  color: #8b8b8b;
-  margin-bottom: 15px;
-}
-/* line 286, style.scss */
-.pagebody h3 + h4 {
-  margin-top: -7px;
-}
-/* line 290, style.scss */
-.pagebody h5 {
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin-bottom: 7px;
 }
-/* line 296, style.scss */
 .pagebody ul {
   margin: 0 0 15px 22px;
 }
-/* line 300, style.scss */
-.pagebody li ul {
-  margin-bottom: 0;
-}
-/* line 304, style.scss */
 .pagebody p, .pagebody li {
-  font-size: 1.1em;
+  font-size: 1.2em;
   line-height: 1.5;
 }
-/* line 309, style.scss */
 .pagebody p {
   margin-bottom: 15px;
 }
-/* line 313, style.scss */
 .pagebody li li,
 .pagebody li p {
   font-size: 100%;
 }
-/* line 318, style.scss */
-.pagebody ul > li > p:last-child {
+.pagebody li > p:last-child {
   margin: 0;
 }
-/* line 322, style.scss */
 .pagebody a {
   color: #000;
   text-decoration: underline;
 }
-/* line 326, style.scss */
 .pagebody a:hover {
-  color: #bb0000;
+  color: #b00;
 }
-/* line 332, style.scss */
-.pagebody > .lastupdated {
-  color: #8b8b8b;
+.pagebody > .updated {
+  color: #8c8c8c;
   margin: 0;
   text-align: right;
 }
 
-/* line 343, style.scss */
 .contactdetail > ul {
   float: left;
   margin: 0;
-  padding-right: 15px;
   width: 50%;
 }
-@media screen and (max-width: 700px) {
-  /* line 343, style.scss */
+.contactdetail > ul:first-child {
+  padding-right: 15px;
+}
+@media screen and (max-width: 650px) {
   .contactdetail > ul {
     float: none;
     padding: 0;
     width: auto;
   }
 }
-/* line 357, style.scss */
 .contactdetail > ul > li > strong {
   display: inline-block;
   width: 60px;
 }
 
-/* line 365, style.scss */
-.technicalskillset > li {
-  list-style: disc;
+.technicalskillset {
+  margin-bottom: -15px;
 }
-
-/* line 370, style.scss */
-.datesection {
-  margin-left: 110px;
-  position: relative;
-  z-index: 0;
-}
-@media screen and (max-width: 550px) {
-  /* line 370, style.scss */
-  .datesection {
-    margin: 0;
-    position: static;
-  }
-}
-/* line 382, style.scss */
-.datesection > .date {
-  color: #000;
-  font-size: 1.1em;
-  font-weight: normal;
-  left: -110px;
-  line-height: 1.63636;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-@media screen and (max-width: 550px) {
-  /* line 382, style.scss */
-  .datesection > .date {
-    font-weight: bold;
-    line-height: 1.5;
-    margin-top: -7px;
-    position: static;
-  }
-}
-/* line 406, style.scss */
-.datesection ul > li {
-  list-style: disc;
-}
-/* line 411, style.scss */
-.datesection > .education {
-  margin-left: 0;
-}
-/* line 415, style.scss */
-.datesection > .education > li {
+.technicalskillset > h3 {
+  clear: left;
   float: left;
-  list-style: none;
+  font-size: 1.2em;
+  margin-bottom: 15px;
   padding-right: 15px;
-  white-space: nowrap;
-  width: 50%;
+  width: 40%;
 }
-@media screen and (max-width: 700px) {
-  /* line 415, style.scss */
-  .datesection > .education > li {
+@media screen and (max-width: 650px) {
+  .technicalskillset > h3 {
     float: none;
+    margin: 0;
     padding: 0;
     width: auto;
   }
+}
+.technicalskillset > ul {
+  float: left;
+  margin: 0 0 15px;
+  width: 60%;
+}
+@media screen and (max-width: 650px) {
+  .technicalskillset > ul {
+    float: none;
+    width: auto;
+  }
+}
+.technicalskillset > ul > li {
+  display: inline;
+}
+.technicalskillset > ul > li:after {
+  content: ', ';
+}
+.technicalskillset > ul > li:last-child:after {
+  content: none;
+}
+
+@media print {
+  .experience > .header {
+    page-break-inside: avoid;
+  }
+}
+.experience > .header > .role {
+  color: #8c8c8c;
+  float: left;
+  font-size: 1.4em;
+  font-weight: bold;
+  width: 70%;
+}
+@media screen and (max-width: 650px) {
+  .experience > .header > .role {
+    float: none;
+    margin: 0;
+    width: auto;
+  }
+}
+.experience > .header > .period {
+  color: #8c8c8c;
+  float: right;
+  text-align: right;
+  width: 30%;
+}
+@media screen and (max-width: 650px) {
+  .experience > .header > .period {
+    float: none;
+    text-align: left;
+    width: auto;
+  }
+}
+.experience > ul li {
+  list-style: disc;
+}
+
+.experience + .experience {
+  margin-top: 30px;
 }

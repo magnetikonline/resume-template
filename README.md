@@ -1,6 +1,6 @@
 ## Resume template
-A HTML5/CSS/Sass template as used for my online resume. Responsive design from a sane 760px right down to mobile, tested under IE8+ and includes nice print styles to boot. Feel free to use and abuse at will.
+A HTML5/CSS/Sass template as used for my personal resume.
 
-View an [example online](http://magnetikonline.github.io/resumetemplate/).
+Responsive design from a sane 760px right down to mobile with print styles to boot.
 
-This is a second revision, the first version branch can be viewed [here](../../tree/version1).
+View an [example online](https://magnetikonline.github.io/resumetemplate/).
