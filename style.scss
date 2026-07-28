@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // -- constants --
 $fontSizeBase: 1.2em;
 $fontSizeHeadingMain: 2em;
@@ -12,9 +14,9 @@ $pageWidth: 92%;
 $pageWidthMaximum: 760px;
 
 $spacingBase: 15px;
-$spacingHalf: (floor($spacingBase / 2));
-$spacingQuarter: (floor($spacingBase / 4));
-$spacingDouble: ($spacingBase * 2);
+$spacingHalf: math.floor(calc($spacingBase / 2));
+$spacingQuarter: math.floor(calc($spacingBase / 4));
+$spacingDouble: $spacingBase * 2;
 
 $topMenuInnerHeight: 30px;
 $dateSectionLeftMargin: 110px;
@@ -23,32 +25,57 @@ $experienceRoleWidth: 70%;
 
 $colorBodyAnchorHover: #b00;
 $colorGrey: #d8d8d8;
-$colorGreyDark: darken($colorGrey,30%);
+$colorGreyDark: #8c8c8c; // darken(30%)
 $colorPageBackground: #f9f9f9;
 $colorPageBodyShadow: #ccc;
 $colorWhiteTopMenu: #ddd;
 
-
 // -- mixins --
 @mixin respondWidthFrom($widthFrom) {
-	@media screen and (min-width: $widthFrom + 1) { @content; }
+	@media screen and (min-width: calc($widthFrom + 1)) {
+		@content;
+	}
 }
 
 @mixin respondWidthUpTo($widthUpTo) {
-	@media screen and (max-width: #{$widthUpTo}) { @content; }
+	@media screen and (max-width: #{$widthUpTo}) {
+		@content;
+	}
 }
 
 @mixin printOnly() {
-	@media print { @content; }
+	@media print {
+		@content;
+	}
 }
-
 
 // -- reset --
 * {
 	box-sizing: border-box;
 }
 
-a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,iframe,img,label,legend,li,ol,p,td,th,ul {
+a,
+abbr,
+body,
+button,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+iframe,
+img,
+label,
+legend,
+li,
+ol,
+p,
+td,
+th,
+ul {
 	border: 0;
 	font-size: 100%;
 	font-weight: normal;
@@ -60,19 +87,28 @@ a,abbr,body,button,fieldset,form,h1,h2,h3,h4,h5,h6,iframe,img,label,legend,li,ol
 	vertical-align: baseline;
 }
 
-a,abbr {
+a,
+abbr {
 	font-weight: inherit;
 }
 
-input,select,textarea {
+input,
+select,
+textarea {
 	font-size: 100%;
 	margin: 0;
 }
 
 // -- base --
-body,button,input,select,td,textarea,th {
+body,
+button,
+input,
+select,
+td,
+textarea,
+th {
 	color: #000;
-	font-family: Verdana,Geneva,sans-serif;
+	font-family: Verdana, Geneva, sans-serif;
 }
 
 body {
@@ -265,11 +301,15 @@ body {
 	}
 
 	// typography - headings
-	> h1,> h2,h3,h4 {
+	> h1,
+	> h2,
+	h3,
+	h4 {
 		font-weight: bold;
 	}
 
-	> h1,> h2 {
+	> h1,
+	> h2 {
 		background: $colorGrey;
 		margin-bottom: $spacingHalf;
 		padding: $spacingHalf $spacingQuarter;
@@ -312,7 +352,8 @@ body {
 		margin: 0 0 $spacingBase ($spacingBase + $spacingHalf);
 	}
 
-	p,li {
+	li,
+	p {
 		font-size: $fontSizeBase;
 		line-height: $lineHeightBase;
 	}
@@ -320,7 +361,6 @@ body {
 	p {
 		margin-bottom: $spacingBase;
 	}
-
 
 	li li,
 	li p {
@@ -421,7 +461,7 @@ body {
 			}
 
 			&:last-child:after {
-				content: none;
+				content: '.';
 			}
 		}
 	}
@@ -433,7 +473,7 @@ body {
 		@extend %clearFix;
 
 		@include printOnly() {
-			page-break-inside: avoid;
+			break-inside: avoid-page;
 		}
 
 		// job role
@@ -481,4 +521,9 @@ body {
 .experience + .experience {
 	// gap between experence items
 	margin-top: $spacingDouble;
+}
+
+.experience.nodescription + .experience {
+	// gap between experience items
+	margin: 0;
 }

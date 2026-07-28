@@ -2,7 +2,28 @@
   box-sizing: border-box;
 }
 
-a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, iframe, img, label, legend, li, ol, p, td, th, ul {
+a,
+abbr,
+body,
+button,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+iframe,
+img,
+label,
+legend,
+li,
+ol,
+p,
+td,
+th,
+ul {
   border: 0;
   font-size: 100%;
   font-weight: normal;
@@ -14,18 +35,27 @@ a, abbr, body, button, fieldset, form, h1, h2, h3, h4, h5, h6, iframe, img, labe
   vertical-align: baseline;
 }
 
-a, abbr {
+a,
+abbr {
   font-weight: inherit;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   font-size: 100%;
   margin: 0;
 }
 
-body, button, input, select, td, textarea, th {
+body,
+button,
+input,
+select,
+td,
+textarea,
+th {
   color: #000;
-  font-family: Verdana,Geneva,sans-serif;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 body {
@@ -44,17 +74,17 @@ body {
   }
 }
 
-.contactdetail:before, .technicalskillset:before, .experience > .header:before,
-.contactdetail:after,
+.experience > .header:before, .technicalskillset:before, .contactdetail:before,
+.experience > .header:after,
 .technicalskillset:after,
-.experience > .header:after {
-  content: '\0020';
+.contactdetail:after {
+  content: " ";
   display: block;
   height: 0;
   overflow: hidden;
 }
 
-.contactdetail:after, .technicalskillset:after, .experience > .header:after {
+.experience > .header:after, .technicalskillset:after, .contactdetail:after {
   clear: both;
 }
 
@@ -66,13 +96,13 @@ body {
   width: 1em;
 }
 
-.topmenu > .inner, .pagebody {
+.pagebody, .topmenu > .inner {
   margin: 0 auto;
   max-width: 760px;
   width: 92%;
 }
 @media screen and (max-width: 500px) {
-  .topmenu > .inner, .pagebody {
+  .pagebody, .topmenu > .inner {
     max-width: none;
     width: 100%;
   }
@@ -111,7 +141,7 @@ body {
   white-space: nowrap;
 }
 .topmenu-navigation > .item:after {
-  content: ' | ';
+  content: " | ";
 }
 .topmenu-navigation > .item:last-child:after {
   content: none;
@@ -198,10 +228,14 @@ body {
     width: auto;
   }
 }
-.pagebody > h1, .pagebody > h2, .pagebody h3, .pagebody h4 {
+.pagebody > h1,
+.pagebody > h2,
+.pagebody h3,
+.pagebody h4 {
   font-weight: bold;
 }
-.pagebody > h1, .pagebody > h2 {
+.pagebody > h1,
+.pagebody > h2 {
   background: #d8d8d8;
   margin-bottom: 7px;
   padding: 7px 3px;
@@ -239,7 +273,8 @@ body {
 .pagebody ul {
   margin: 0 0 15px 22px;
 }
-.pagebody p, .pagebody li {
+.pagebody li,
+.pagebody p {
   font-size: 1.2em;
   line-height: 1.5;
 }
@@ -320,15 +355,15 @@ body {
   display: inline;
 }
 .technicalskillset > ul > li:after {
-  content: ', ';
+  content: ", ";
 }
 .technicalskillset > ul > li:last-child:after {
-  content: none;
+  content: ".";
 }
 
 @media print {
   .experience > .header {
-    page-break-inside: avoid;
+    break-inside: avoid-page;
   }
 }
 .experience > .header > .role {
@@ -364,4 +399,8 @@ body {
 
 .experience + .experience {
   margin-top: 30px;
+}
+
+.experience.nodescription + .experience {
+  margin: 0;
 }
