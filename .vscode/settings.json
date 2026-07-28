@@ -1,0 +1,18 @@
+{
+	"html.autoClosingTags": false,
+	"html.autoCreateQuotes": false,
+	"html.format.maxPreserveNewLines": 1,
+	"html.format.wrapAttributes": "preserve",
+	"html.format.wrapLineLength": 0,
+	"[html]": {
+		"editor.formatOnSave": true,
+	},
+
+	"scss.format.enable": true,
+	"scss.format.newlineBetweenSelectors": false,
+	"scss.format.maxPreserveNewLines": 2,
+	"scss.format.spaceAroundSelectorSeparator": true,
+	"[scss]": {
+		"editor.formatOnSave": true,
+	},
+}
