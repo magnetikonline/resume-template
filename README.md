@@ -1,4 +1,4 @@
-## Resume template
+# Resume template
 
 A HTML5/CSS/Sass template as used for my personal resume.
 
